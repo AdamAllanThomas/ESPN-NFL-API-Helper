@@ -70,17 +70,13 @@ export interface Team {
 export interface Group {}
 
 export interface Link {
-  language: Language;
+  language: string;
   rel: LinkRel[];
   href: string;
   text: Text;
   shortText: Text;
   isExternal: boolean;
   isPremium: boolean;
-}
-
-export enum Language {
-  En = "en",
 }
 
 export enum LinkRel {

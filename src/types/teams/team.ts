@@ -82,17 +82,13 @@ export interface Parent {
 }
 
 export interface NextEventLink {
-  language: Language;
+  language: string;
   rel: string[];
   href: string;
   text: string;
   shortText: string;
   isExternal: boolean;
   isPremium: boolean;
-}
-
-export enum Language {
-  EnUS = "en-US",
 }
 
 export interface NextEvent {

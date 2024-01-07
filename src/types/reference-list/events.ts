@@ -40,12 +40,8 @@ export interface Competition {
 }
 
 export interface Broadcast {
-  market: MarketEnum;
+  market: string;
   names: NameElement[];
-}
-
-export enum MarketEnum {
-  National = "national",
 }
 
 export enum NameElement {
@@ -86,14 +82,9 @@ export interface Linescore {
 
 export interface Record {
   name: RecordName;
-  abbreviation?: RecordAbbreviation;
+  abbreviation?: string;
   type: RecordType;
   summary: string;
-}
-
-export enum RecordAbbreviation {
-  Any = "Any",
-  Game = "Game",
 }
 
 export enum RecordName {
@@ -117,35 +108,11 @@ export interface Team {
   displayName: string;
   shortDisplayName: string;
   color?: string;
-  alternateColor?: AlternateColor;
+  alternateColor?: string;
   isActive: boolean;
   venue?: TeamClass;
   links: TeamLink[];
   logo: string;
-}
-
-export enum AlternateColor {
-  A5Acaf = "a5acaf",
-  B0B7Bc = "b0b7bc",
-  B3995D = "b3995d",
-  Bbbbbb = "bbbbbb",
-  C41230 = "c41230",
-  C60C30 = "c60c30",
-  C9243F = "c9243f",
-  D50A0A = "d50a0a",
-  D7A22A = "d7a22a",
-  E64100 = "e64100",
-  Fc4C02 = "fc4c02",
-  Ff3C00 = "ff3c00",
-  Ffb612 = "ffb612",
-  Ffc20E = "ffc20e",
-  Ffc62F = "ffc62f",
-  Ffd100 = "ffd100",
-  Ffffff = "ffffff",
-  The000000 = "000000",
-  The002A5C = "002a5c",
-  The3E3A35 = "3e3a35",
-  The69Be28 = "69be28",
 }
 
 export interface TeamLink {
@@ -188,39 +155,22 @@ export interface GeoBroadcast {
   type: GeoBroadcastType;
   market: MarketClass;
   media: Media;
-  lang: Lang;
-  region: Region;
-}
-
-export enum Lang {
-  En = "en",
+  lang: string;
+  region: string;
 }
 
 export interface MarketClass {
   id: string;
-  type: MarketType;
-}
-
-export enum MarketType {
-  National = "National",
+  type: string;
 }
 
 export interface Media {
   shortName: NameElement;
 }
 
-export enum Region {
-  Us = "us",
-}
-
 export interface GeoBroadcastType {
   id: string;
-  shortName: ShortName;
-}
-
-export enum ShortName {
-  Tv = "TV",
-  Web = "Web",
+  shortName: string;
 }
 
 export interface Headline {
@@ -398,13 +348,9 @@ export enum TypeEnum {
 
 export interface Status {
   clock: number;
-  displayClock: DisplayClock;
+  displayClock: string;
   period: number;
   type: StatusType;
-}
-
-export enum DisplayClock {
-  The000 = "0:00",
 }
 
 export interface StatusType {
@@ -412,19 +358,10 @@ export interface StatusType {
   name: TypeName;
   state: State;
   completed: boolean;
-  description: Description;
-  detail: Description;
-  shortDetail: Description;
-  altDetail?: AltDetail;
-}
-
-export enum AltDetail {
-  Ot = "OT",
-}
-
-export enum Description {
-  Final = "Final",
-  FinalOT = "Final/OT",
+  description: string;
+  detail: string;
+  shortDetail: string;
+  altDetail?: string;
 }
 
 export enum TypeName {
@@ -434,17 +371,14 @@ export enum TypeName {
 }
 
 export enum State {
+  In = "in",
   Post = "post",
+  Pre = "pre",
 }
 
 export interface CompetitionType {
   id: string;
-  abbreviation: TypeAbbreviation;
-}
-
-export enum TypeAbbreviation {
-  Allstar = "ALLSTAR",
-  Std = "STD",
+  abbreviation: string;
 }
 
 export interface CompetitionVenue {
@@ -461,17 +395,13 @@ export interface Address {
 }
 
 export interface EventLink {
-  language: Language;
+  language: string;
   rel: TypeEnum[];
   href: string;
   text: ShortText;
   shortText: ShortText;
   isExternal: boolean;
   isPremium: boolean;
-}
-
-export enum Language {
-  EnUS = "en-US",
 }
 
 export interface EventSeason {

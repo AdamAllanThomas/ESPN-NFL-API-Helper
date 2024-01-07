@@ -83,17 +83,13 @@ export interface Injury {
 }
 
 export interface Link {
-  language: Language;
+  language: string;
   rel: Rel[];
   href: string;
   text: Text;
   shortText: Text;
   isExternal: boolean;
   isPremium: boolean;
-}
-
-export enum Language {
-  EnUS = "en-US",
 }
 
 export enum Rel {

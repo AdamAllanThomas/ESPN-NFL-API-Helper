@@ -50,14 +50,7 @@ export interface LogoElement {
   height: number;
   alt: string;
   rel: BoxscoreSource[];
-  lastUpdated?: LastUpdated;
-}
-
-export enum LastUpdated {
-  The20180605T1211Z = "2018-06-05T12:11Z",
-  The20230824T1926Z = "2023-08-24T19:26Z",
-  The20230824T1927Z = "2023-08-24T19:27Z",
-  The20230824T1928Z = "2023-08-24T19:28Z",
+  lastUpdated?: string;
 }
 
 export enum BoxscoreSource {
@@ -197,12 +190,8 @@ export interface TimeElapsed {
 }
 
 export interface EndPeriod {
-  type: PeriodType;
+  type: string;
   number: number;
-}
-
-export enum PeriodType {
-  Quarter = "quarter",
 }
 
 export interface CurrentPlay {
@@ -474,7 +463,7 @@ export interface GameSummaryInjury {
 }
 
 export interface InjuryInjury {
-  status: StatusEnum;
+  status: string;
   date: string;
   athlete: InjuryAthlete;
   type: InjuryType;
@@ -507,58 +496,23 @@ export interface Headshot {
 
 export interface Details {
   fantasyStatus: FantasyStatus;
-  type: DetailsType;
-  location: Location;
-  detail: Detail;
-  side: Detail;
+  type: string;
+  location: string;
+  detail: string;
+  side: string;
   returnDate: Date;
 }
 
-export enum Detail {
-  NotSpecified = "Not Specified",
-}
-
 export interface FantasyStatus {
-  description: Tion;
-  abbreviation: Tion;
-}
-
-export enum Tion {
-  Inactive = "INACTIVE",
-}
-
-export enum Location {
-  Leg = "Leg",
-  Other = "Other",
-}
-
-export enum DetailsType {
-  Ankle = "Ankle",
-  CoachSDecision = "Coach's Decision",
-  Hip = "Hip",
-}
-
-export enum StatusEnum {
-  Out = "Out",
+  description: string;
+  abbreviation: string;
 }
 
 export interface InjuryType {
   id: string;
-  name: Name;
-  description: Description;
-  abbreviation: Abbreviation;
-}
-
-export enum Abbreviation {
-  O = "O",
-}
-
-export enum Description {
-  Out = "out",
-}
-
-export enum Name {
-  InjuryStatusOut = "INJURY_STATUS_OUT",
+  name: string;
+  description: string;
+  abbreviation: string;
 }
 
 export interface GameSummaryLeader {

@@ -11,7 +11,7 @@ export interface ScoreBoardData {
   nowFeedCount: number;
   meta: Meta;
   nowFeedSupported: boolean;
-  sport: RootElement[];
+  sport: string[];
   tier2Nav: Tier2Nav;
 }
 
@@ -411,7 +411,7 @@ export interface Analytics {
   chartbeat: Chartbeat;
   ABTest: ABTest;
   nielsen: Nielsen;
-  device: Device;
+  device: string;
   isFeaturePhone: boolean;
   cto: boolean;
   qualtrics: boolean;
@@ -439,7 +439,7 @@ export interface TargetURL {
 
 export interface Chartbeat {
   domain: string;
-  sections: RootElement;
+  sections: string;
   authors: string;
   path: string;
   title: string;
@@ -448,36 +448,15 @@ export interface Chartbeat {
   loadVidJS: boolean;
 }
 
-export enum RootElement {
-  Nfl = "nfl",
-}
-
-export enum Device {
-  Away = "away",
-  Bets = "bets",
-  Boxscore = "boxscore",
-  Desktop = "desktop",
-  EspnBet = "espn-bet",
-  Event = "event",
-  Game = "game",
-  Highlights = "highlights",
-  Home = "home",
-  Index = "index",
-  League = "league",
-  Pbp = "pbp",
-  Recap = "recap",
-  Summary = "summary",
-}
-
 export interface Metrics {
   page_url: string;
   premium: boolean;
   content_type: string;
   page_infrastructure: string;
   page_type: string;
-  league: RootElement;
-  section: RootElement;
-  sport: RootElement;
+  league: string;
+  section: string;
+  sport: string;
 }
 
 export interface Nielsen {
@@ -514,21 +493,21 @@ export interface General {
 
 export interface Omniture {
   espn3ContentType: string;
-  league: RootElement;
+  league: string;
   countryRegion: string;
   hier1: string;
-  section: RootElement;
+  section: string;
   pageName: string;
   sections: string;
   site: string;
   premium: string;
   appearance: Appearance;
-  convrSport: ConvrSport;
+  convrSport: string;
   pageURL: string;
   lang: string;
   prop46: string;
   contentType: string;
-  sport: ConvrSport;
+  sport: string;
   account: string;
   siteType: SiteTypeEnum;
   prop58: string;
@@ -542,10 +521,6 @@ export enum Appearance {
   Playercard = "playercard",
 }
 
-export enum ConvrSport {
-  Football = "football",
-}
-
 export enum SiteTypeEnum {
   Full = "full",
   Medium = "medium",
@@ -553,7 +528,7 @@ export enum SiteTypeEnum {
 }
 
 export interface Content {
-  league: RootElement;
+  league: string;
   sbGroup: SbGroup;
   sbData: SbData;
   isWeekOriented: boolean;
@@ -766,17 +741,13 @@ export interface AiringProperties {
 }
 
 export interface Broadcast {
-  market: MarketEnum;
+  market: string;
   names: string[];
-}
-
-export enum MarketEnum {
-  National = "national",
 }
 
 export interface Competitor {
   uid: string;
-  homeAway: Device;
+  homeAway: string;
   score: string;
   winner?: boolean;
   records: Record[];
@@ -874,13 +845,8 @@ export interface Linescore {
 export interface Record {
   summary: string;
   name: RecordName;
-  abbreviation?: RecordAbbreviation;
+  abbreviation?: string;
   type: RecordType;
-}
-
-export enum RecordAbbreviation {
-  Any = "Any",
-  Game = "Game",
 }
 
 export enum RecordName {
@@ -950,39 +916,22 @@ export interface GeoBroadcast {
   market: MarketClass;
   media: Media;
   type: GeoBroadcastType;
-  lang: Lang;
-  region: Region;
-}
-
-export enum Lang {
-  En = "en",
+  lang: string;
+  region: string;
 }
 
 export interface MarketClass {
   id: string;
-  type: MarketType;
-}
-
-export enum MarketType {
-  National = "National",
+  type: string;
 }
 
 export interface Media {
   shortName: string;
 }
 
-export enum Region {
-  Us = "us",
-}
-
 export interface GeoBroadcastType {
   id: string;
-  shortName: ShortName;
-}
-
-export enum ShortName {
-  Tv = "TV",
-  Web = "Web",
+  shortName: string;
 }
 
 export interface Headline {
@@ -1127,7 +1076,7 @@ export interface CurrentTotal {
 export interface OddLink {
   isExternal: boolean;
   shortText: string;
-  rel: Device[];
+  rel: string[];
   language: string;
   href: string;
   text: string;
@@ -1142,19 +1091,11 @@ export interface LinkTracking {
 
 export interface Tags {
   gameId: number;
-  league: RootElement;
-  sport: ConvrSport;
+  league: string;
+  sport: string;
   betType: string;
-  betSide: BetSide;
+  betSide: string;
   betDetails?: string;
-}
-
-export enum BetSide {
-  Away = "away",
-  Home = "home",
-  None = "none",
-  Over = "over",
-  Under = "under",
 }
 
 export interface Moneyline {
@@ -1212,8 +1153,8 @@ export interface PurpleAttributes {
   breakpoints?: string;
   route?: string;
   "match-url"?: string;
-  sportAbbrev?: RootElement;
-  icon?: ConvrSport;
+  sportAbbrev?: string;
+  icon?: string;
   mobile?: string;
   placeholder?: string;
 }
@@ -1251,7 +1192,7 @@ export interface StatusType {
   state: State;
   completed: boolean;
   detail: string;
-  shortDetail: ShortDetail;
+  shortDetail: string;
 }
 
 export enum TypeName {
@@ -1260,15 +1201,8 @@ export enum TypeName {
   StatusScheduled = "STATUS_SCHEDULED",
 }
 
-export enum ShortDetail {
-  Final = "Final",
-  The16815PmEst = "1/6 - 8:15 PM EST",
-  The17100PmEst = "1/7 - 1:00 PM EST",
-  The17425PmEst = "1/7 - 4:25 PM EST",
-  The17820PmEst = "1/7 - 8:20 PM EST",
-}
-
 export enum State {
+  In = "in",
   Post = "post",
   Pre = "pre",
 }
@@ -1281,11 +1215,7 @@ export interface Ticket {
 
 export interface CompetitionType {
   id: string;
-  abbreviation: TypeAbbreviation;
-}
-
-export enum TypeAbbreviation {
-  Std = "STD",
+  abbreviation: string;
 }
 
 export interface CompetitionVenue {
@@ -1304,11 +1234,7 @@ export interface Address {
 export interface EventSeason {
   year: number;
   type: number;
-  slug: Slug;
-}
-
-export enum Slug {
-  RegularSeason = "regular-season",
+  slug: string;
 }
 
 export interface Weather {
@@ -1335,7 +1261,7 @@ export interface SbDataLeague {
   id: string;
   abbreviation: Label;
   logos: LeagueLogo[];
-  slug: RootElement;
+  slug: string;
 }
 
 export interface LeagueLogo {
@@ -1372,19 +1298,19 @@ export interface SbGroup {
   altTitle: string;
   scheduleStartDate: Date;
   isCollege: boolean;
-  league: RootElement;
-  sport: ConvrSport;
+  league: string;
+  sport: string;
 }
 
 export interface Meta {
   imageWidth: number;
   image: string;
-  twitter_card: Device;
+  twitter_card: string;
   og_site_name: string;
   twitter_app_id_iphone: string;
   description: string;
   og_type: string;
-  twitter_app_name_googleplay: TwitterAppNameGoogleplay;
+  twitter_app_name_googleplay: string;
   label: Label;
   canonical: string;
   type: string;
@@ -1392,18 +1318,9 @@ export interface Meta {
   imageHeight: number;
   fb_app_id: string;
   twitter_site: string;
-  root: RootElement;
+  root: string;
   twitter_app_id_googleplay: string;
-  twitter_app_name_iphone: TwitterAppNameGoogleplay;
-}
-
-export enum TwitterAppNameGoogleplay {
-  ESPNSeniorWriter = "ESPN Senior Writer",
-  ESPNStaffWriter = "ESPN Staff Writer",
-  Espn = "ESPN",
-  HannahStormESPN = "HannahStormESPN",
-  JFowlerESPN = "JFowlerESPN",
-  TeamPenske = "Team_Penske",
+  twitter_app_name_iphone: string;
 }
 
 export interface News {
@@ -1460,14 +1377,9 @@ export interface FluffyAPI {
 }
 
 export interface CategoryLeague {
-  description: LeagueDescription;
+  description: string;
   links: LeagueLinks;
   id: number;
-}
-
-export enum LeagueDescription {
-  Nascar = "NASCAR",
-  Nfl = "NFL",
 }
 
 export interface LeagueLinks {
@@ -1554,9 +1466,9 @@ export interface NowFeed {
   dataSourceIdentifier: string;
   externalId?: string;
   categorized?: Date;
-  source?: TwitterAppNameGoogleplay;
+  source?: string;
   published: Date;
-  type: ContributingPartnerEnum;
+  type: string;
   allowContentReactions: boolean;
   nowId: string;
   premium: boolean;
@@ -1632,18 +1544,13 @@ export interface Retweet {
   byline: string;
 }
 
-export enum ContributingPartnerEnum {
-  Shortstop = "Shortstop",
-  Tweet = "Tweet",
-}
-
 export interface NowFeedVideo {
   dataSourceIdentifier: string;
   keywords: any[];
   timeRestrictions: TimeRestrictions;
   caption: string;
   description: string;
-  contributingPartner: ContributingPartnerEnum;
+  contributingPartner: string;
   contributingSystem: string;
   source: string;
   title: string;
@@ -1726,7 +1633,7 @@ export interface Navigation {
 
 export interface NavigationAttributes {
   sport_id: string;
-  root: RootElement;
+  root: string;
   league: boolean;
 }
 
@@ -1760,7 +1667,7 @@ export interface PurpleLink {
   href: string;
   isPremium: boolean;
   rel?: PurpleRel[];
-  lang?: Lang;
+  lang?: string;
   logoUrl?: string;
 }
 

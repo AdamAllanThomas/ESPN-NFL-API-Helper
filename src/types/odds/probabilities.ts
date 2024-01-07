@@ -27,14 +27,6 @@ export interface AwayTeam {
 
 export interface Source {
   id: string;
-  description: Description;
-  state: State;
-}
-
-export enum Description {
-  Feed = "feed",
-}
-
-export enum State {
-  Full = "full",
+  description: string;
+  state: string;
 }

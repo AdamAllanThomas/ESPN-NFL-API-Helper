@@ -22,32 +22,16 @@ export interface Athlete {
 export interface Splits {
   id: string;
   name: SplitsName;
-  abbreviation: SplitsAbbreviation;
+  abbreviation: string;
   categories: Category[];
 }
 
-export enum SplitsAbbreviation {
-  QBRWeek = "QBRWeek",
-}
-
 export interface Category {
-  name: CategoryName;
-  displayName: CategoryDisplayName;
-  shortDisplayName: CategoryDisplayName;
-  abbreviation: CategoryAbbreviation;
+  name: string;
+  displayName: string;
+  shortDisplayName: string;
+  abbreviation: string;
   stats: Stat[];
-}
-
-export enum CategoryAbbreviation {
-  Gen = "GEN",
-}
-
-export enum CategoryDisplayName {
-  General = "General",
-}
-
-export enum CategoryName {
-  General = "general",
 }
 
 export interface Stat {

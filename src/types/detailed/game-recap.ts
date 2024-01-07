@@ -901,12 +901,8 @@ export interface Broadcast {
   market: Market;
   media: Media;
   type: BroadcastType;
-  lang: Lang;
+  lang: string;
   region: string;
-}
-
-export enum Lang {
-  En = "en",
 }
 
 export interface Market {
@@ -999,18 +995,12 @@ export interface PurpleImage {
   width?: number;
   id?: number;
   credit?: string;
-  type: ImageType;
+  type: string;
   url: string;
   height?: number;
   caption?: string;
   _id?: number;
   ratio?: string;
-}
-
-export enum ImageType {
-  Header = "header",
-  Media = "Media",
-  Stitcher = "stitcher",
 }
 
 export interface FluffyLinks {
@@ -1195,8 +1185,8 @@ export interface PurpleLink {
   text: string;
   href: string;
   isPremium: boolean;
-  rel?: Rel[];
-  lang?: Lang;
+  rel?: string[];
+  lang?: string;
   logoUrl?: string;
 }
 
@@ -1204,11 +1194,4 @@ export interface FluffyAttributes {
   mobile?: string;
   teamAbbrev?: string;
   teamId?: number;
-}
-
-export enum Rel {
-  Conference = "conference",
-  Group = "group",
-  Label = "label",
-  Team = "team",
 }

@@ -1,11 +1,11 @@
-export interface StandingsData {
+export interface Standings {
   analytics: Analytics;
   ads: StandingsAds;
   DTCpackages: DTCpackages;
   meta: StandingsMeta;
   nowFeedSupported: boolean;
-  type: AuthorsEnum;
-  sport: LeagueElement[];
+  type: string;
+  sport: string[];
   tier2Nav: Tier2Nav;
   content: Content;
 }
@@ -77,10 +77,10 @@ export interface PackagePaywall {
 
 export interface Toggle {
   enabled: boolean;
-  sections: SectionElement[];
+  sections: Section[];
 }
 
-export interface SectionElement {
+export interface Section {
   disclaimerText2: string;
   isDefault: boolean;
   disclaimerText1: string;
@@ -434,8 +434,8 @@ export interface TargetURL {
 
 export interface Chartbeat {
   domain: string;
-  sections: LeagueElement;
-  authors: AuthorsEnum;
+  sections: string;
+  authors: string;
   path: string;
   title: string;
   zone: string;
@@ -443,29 +443,17 @@ export interface Chartbeat {
   loadVidJS: boolean;
 }
 
-export enum AuthorsEnum {
-  Standings = "standings",
-}
-
-export enum LeagueElement {
-  Nfl = "nfl",
-  None = "none",
-  Sports = "sports",
-  Sub = "sub",
-  Teams = "teams",
-}
-
 export interface Metrics {
   nav_method: string;
   page_url: string;
   premium: boolean;
-  content_type: AuthorsEnum;
+  content_type: string;
   page_infrastructure: string;
-  page_type: AuthorsEnum;
-  league: LeagueElement;
+  page_type: string;
+  league: string;
   page_name: string;
-  section: LeagueElement;
-  sport: LeagueElement;
+  section: string;
+  sport: string;
 }
 
 export interface Nielsen {
@@ -502,38 +490,32 @@ export interface General {
 
 export interface AnalyticsOmniture {
   espn3ContentType: string;
-  league: LeagueElement;
+  league: string;
   countryRegion: string;
   navMethod: string;
   hier1: string;
-  section: LeagueElement;
+  section: string;
   pageName: string;
   sections: string;
-  site: TwitterSite;
+  site: string;
   premium: string;
   appearance: string;
   convrSport: string;
   pageURL: string;
   lang: string;
   prop46: string;
-  contentType: AuthorsEnum;
+  contentType: string;
   sport: string;
   account: string;
   siteType: string;
   prop58: string;
 }
 
-export enum TwitterSite {
-  Espn = "espn",
-  Espncricinfo = "espncricinfo",
-  Espnfc = "espnfc",
-}
-
 export interface Content {
   title: string;
   description: string;
   sport: string;
-  league: LeagueElement;
+  league: string;
   config: ContentConfig;
   standings: ContentStandings;
   canonical: string;
@@ -561,73 +543,22 @@ export interface ContentConfig {
   metaTitle: string;
   metaDescription: string;
   hasTeamCategory: boolean;
-  league: LeagueElement;
+  league: string;
   canonical: string;
   clinchers: Clinchers;
 }
 
 export interface Category {
-  key: Sort;
-  defaultAbbreviation: Abbreviation;
+  key: string;
+  defaultAbbreviation: string;
   colgroup: number;
   sortable: boolean;
   sortDirection?: string;
   mutable: boolean;
-  abbreviation: Abbreviation;
-  description: Description;
+  abbreviation: string;
+  description: string;
   sorted?: string;
-  display?: Display;
-}
-
-export enum Abbreviation {
-  Away = "AWAY",
-  Conf = "CONF",
-  Diff = "DIFF",
-  Div = "DIV",
-  Empty = "",
-  Home = "HOME",
-  L = "L",
-  Pa = "PA",
-  Pct = "PCT",
-  Pf = "PF",
-  Road = "ROAD",
-  Strk = "STRK",
-  T = "T",
-  W = "W",
-}
-
-export enum Description {
-  AwayRecord = "Away Record",
-  ConferenceRecord = "Conference Record",
-  CurrentStreak = "Current Streak",
-  DivisionRecord = "Division Record",
-  HomeRecord = "Home Record",
-  Losses = "Losses",
-  PointDifferential = "Point Differential",
-  Ties = "Ties",
-  TotalPointsAgainst = "Total Points Against",
-  TotalPointsFor = "Total Points For",
-  WINS = "Wins",
-  WinningPercentage = "Winning Percentage",
-}
-
-export enum Display {
-  Center = "center",
-}
-
-export enum Sort {
-  Differential = "differential",
-  Home = "home",
-  Losses = "losses",
-  Pointsagainst = "pointsagainst",
-  Pointsfor = "pointsfor",
-  Road = "road",
-  Streak = "streak",
-  Ties = "ties",
-  Vsconf = "vsconf",
-  Vsdiv = "vsdiv",
-  WINS = "wins",
-  Winpercent = "winpercent",
+  display?: string;
 }
 
 export interface Clinchers {
@@ -650,17 +581,12 @@ export interface Empty {
 }
 
 export interface ParametersClass {
-  view: AuthorsEnum;
+  view: string;
   group: string;
-  sort: Sort;
+  sort: string;
   dir: string;
   season: number;
-  seasontype: Seasontype;
-}
-
-export enum Seasontype {
-  Pre = "pre",
-  Reg = "reg",
+  seasontype: string;
 }
 
 export interface ViewElement {
@@ -678,8 +604,8 @@ export interface ConfigLink {
 
 export interface Seasons {
   season: number;
-  seasonName: SeasonNameEnum;
-  seasonType: Seasontype;
+  seasonName: string;
+  seasonType: string;
   seasonTypeId: string;
   maxYear: number;
   minYear: number;
@@ -696,38 +622,26 @@ export interface AvailableYear {
   year: number;
 }
 
-export enum SeasonNameEnum {
-  Preseason = "Preseason",
-  RegularSeason = "Regular Season",
-}
-
 export interface SeasonTypesByYear {
   id: string;
-  name: SeasonNameEnum;
-  abbreviation: Seasontype;
+  name: string;
+  abbreviation: string;
 }
 
 export interface Params {
-  sportRoot: LeagueElement;
+  sportRoot: string;
   xhr: string;
   pathParams: PathParams;
-  root: LeagueElement;
-  lang: Lang;
-  type: AuthorsEnum;
+  root: string;
+  lang: string;
+  type: string;
   uri: string;
   req: Req;
 }
 
-export enum Lang {
-  En = "en",
-  Es = "es",
-  Nl = "nl",
-  Pt = "pt",
-}
-
 export interface Req {
   entitlements: Entitlements;
-  template: AuthorsEnum;
+  template: string;
   country: string;
   edition: Edition;
   personalized: Personalized;
@@ -749,9 +663,9 @@ export interface Req {
 
 export interface Edition {
   country: string;
-  language: Lang;
+  language: string;
   domain: string;
-  site: TwitterSite;
+  site: string;
   config: LocalEditionConfigClass;
   localEditionConfig: LocalEditionConfigClass;
   siteId: string;
@@ -767,7 +681,7 @@ export interface Edition {
 export interface LocalEditionConfigClass {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: ConfigDateTime;
   numberFormat: NumberFormat;
@@ -833,7 +747,7 @@ export interface ConfigAds {
   "dev-config": number;
   "qa-config": number;
   "prod-config": number;
-  outputType: AdsOutputType;
+  outputType: string;
   disableAdRequestOnBackgroundedVideo?: boolean;
   featurePhone: AdsFeaturePhone;
   parnterAd?: boolean;
@@ -841,15 +755,7 @@ export interface ConfigAds {
 }
 
 export interface AdsFeaturePhone {
-  outputType: FeaturePhoneOutputType;
-}
-
-export enum FeaturePhoneOutputType {
-  NoJS = "no-js",
-}
-
-export enum AdsOutputType {
-  JS = "js",
+  outputType: string;
 }
 
 export interface App {
@@ -867,27 +773,9 @@ export interface AppDetails {
 
 export interface Android {
   id: string;
-  name: TwitterAppNameGoogleplay;
-  deepLinkUrl: DeepLinkURL;
-  deepLinkUrlScheme: DeepLinkURLScheme;
-}
-
-export enum DeepLinkURL {
-  AndroidAppCOMEspnScoreCenterSportscenter = "android-app://com.espn.score_center/sportscenter",
-  AndroidAppCOMJulyCricinfoEspncricinfo = "android-app://com.july.cricinfo/espncricinfo",
-  IosApp317469184Sportscenter = "ios-app://317469184/sportscenter",
-  IosApp417408017Espncricinfo = "ios-app://417408017/espncricinfo",
-}
-
-export enum DeepLinkURLScheme {
-  Espncricinfo = "espncricinfo",
-  Sportscenter = "sportscenter",
-}
-
-export enum TwitterAppNameGoogleplay {
-  ESPNcricinfo = "ESPNcricinfo",
-  Espn = "ESPN",
-  EspnFc = "ESPN FC",
+  name: string;
+  deepLinkUrl: string;
+  deepLinkUrlScheme: string;
 }
 
 export interface ConfigBetting {
@@ -943,13 +831,13 @@ export interface Country {
 }
 
 export interface ConfigDateTime {
-  long: DateTimeLong;
-  medium: Medium;
-  short: MDEnum;
-  timeFormat: TimeFormat;
-  firstDayOfWeek: FirstDayOfWeek;
+  long: string;
+  medium: string;
+  short: string;
+  timeFormat: string;
+  firstDayOfWeek: string;
   timeZone: string;
-  timeZoneBucket: TimeZoneBucket;
+  timeZoneBucket: string;
   defaultFormat: string;
   timeZoneString: string;
   displayTimeZone?: boolean;
@@ -958,74 +846,19 @@ export interface ConfigDateTime {
 }
 
 export interface Age {
-  seconds: Seconds;
-  minutes: Minutes;
-  hours: Hours;
-  days: Days;
-}
-
-export enum Days {
-  D = "d",
-}
-
-export enum Hours {
-  H = "h",
-  U = "u",
-}
-
-export enum Minutes {
-  M = "m",
-}
-
-export enum Seconds {
-  S = "s",
-}
-
-export enum FirstDayOfWeek {
-  Monday = "Monday",
-  Sunday = "Sunday",
-}
-
-export enum DateTimeLong {
-  DdddDMMMMYyyy = "dddd, d MMMM yyyy",
-  DdddMMMMDYyyy = "dddd MMMM d, yyyy",
-}
-
-export enum Medium {
-  DMMMMYyyy = "d MMMM yyyy",
-  MMMMDYyyy = "MMMM d, yyyy",
-}
-
-export enum MDEnum {
-  DM = "d/M",
-  MD = "M/d",
-}
-
-export enum TimeFormat {
-  HMm = "h:mm",
-}
-
-export enum TimeZoneBucket {
-  AmericaNewYork = "America/New_York",
-  EuropeAmsterdam = "Europe/Amsterdam",
+  seconds: string;
+  minutes: string;
+  hours: string;
+  days: string;
 }
 
 export interface DisneyID {
-  css: CSS;
+  css: string;
   langPref: string;
   editionSource: string;
-  clientId: ClientID;
+  clientId: string;
   loginMethod?: string;
   stuff?: string;
-}
-
-export enum ClientID {
-  EspnOnesiteWeb = "ESPN-ONESITE.WEB",
-}
-
-export enum CSS {
-  DisneyidCorev4CSS = "disneyid/corev4.css",
-  DisneyidCorev4CSSDisneyidDeportesCSS = "disneyid/corev4.css,disneyid/deportes.css",
 }
 
 export interface EditionAlert {
@@ -1035,8 +868,8 @@ export interface EditionAlert {
 
 export interface ConfigEditionSettings {
   key: string;
-  site: TwitterSite;
-  language: Lang;
+  site: string;
+  language: string;
   country: string;
   domain: string;
   editionSiteId: string;
@@ -1046,13 +879,9 @@ export interface ConfigEditionSettings {
   name?: string;
   localePrependedPath?: boolean;
   countryName?: string;
-  section?: SectionEnum;
+  section?: string;
   isStarPartner?: boolean;
   isSonyPartner?: boolean;
-}
-
-export enum SectionEnum {
-  Cricinfo = "cricinfo",
 }
 
 export interface ConfigFeeds {
@@ -1061,12 +890,7 @@ export interface ConfigFeeds {
 
 export interface PurpleGooglenews {
   allowedContentTypes: string[];
-  excludedStoryTypes: SportElement[];
-}
-
-export enum SportElement {
-  Cricket = "cricket",
-  InCricket = "in/cricket",
+  excludedStoryTypes: string[];
 }
 
 export interface ConfigGameSettings {
@@ -1077,27 +901,21 @@ export interface ConfigGameSettings {
 }
 
 export interface JavaLocale {
-  language: Lang;
+  language: string;
   region: string;
 }
 
 export interface ConfigMeta {
-  titleBranding: TitleBranding;
+  titleBranding: string;
   titleBrandingWithDomain?: string;
   schema: Schema;
-  defaultMetaImage?: DefaultMetaImage;
+  defaultMetaImage?: string;
   social: PurpleSocial;
   description?: string;
 }
 
-export enum DefaultMetaImage {
-  EspnRedPNG = "espn_red.png",
-  EspncricinfoPNG = "espncricinfo.png",
-  EspndeportesWhitePNG = "espndeportes_white.png",
-}
-
 export interface Schema {
-  name: TwitterAppNameGoogleplay;
+  name: string;
 }
 
 export interface PurpleSocial {
@@ -1106,72 +924,24 @@ export interface PurpleSocial {
 }
 
 export interface Facebook {
-  id: FbAppID;
-  qa_id: QAID;
+  id: string;
+  qa_id: string;
   og_site_name: string;
   locale: string;
 }
 
-export enum FbAppID {
-  Empty = "",
-  The116656161708917 = "116656161708917",
-  The260890547115 = "260890547115",
-}
-
-export enum QAID {
-  Empty = "",
-  The280725051968835 = "280725051968835",
-}
-
 export interface PurpleTwitter {
   twitterId: string;
-  card: Card;
-  site: Site;
-  language: Lang;
-}
-
-export enum Card {
-  Summary = "summary",
-}
-
-export enum Site {
-  Espn = "espn",
-  Espncricinfo = "@espncricinfo",
-  Espnfc = "espnfc",
-  SiteESPN = "ESPN",
-}
-
-export enum TitleBranding {
-  ESPNDeportes = "- ESPNDeportes",
-  ESPNcricinfoCOM = "ESPNcricinfo.com",
-  Espn = "- ESPN",
-  EspnFc = "-  ESPN FC",
+  card: string;
+  site: string;
+  language: string;
 }
 
 export interface NumberFormat {
-  long: NumberFormatLong;
-  short: NumberFormatShort;
-  currency: Currency;
-  percent: Percent;
-}
-
-export enum Currency {
-  Currency00 = "#.###,00",
-  The00 = "#,###.00",
-}
-
-export enum NumberFormatLong {
-  Empty = "#,###",
-  Long = "#.###",
-}
-
-export enum Percent {
-  Percent00 = "#,00%",
-  The00 = "#.00%",
-}
-
-export enum NumberFormatShort {
-  Empty = "###",
+  long: string;
+  short: string;
+  currency: string;
+  percent: string;
 }
 
 export interface PartnerModules {
@@ -1196,59 +966,21 @@ export interface Shop {
 }
 
 export interface ConfigSiteLogo {
-  class: Class;
+  class: string;
   featurePhone: PurpleFeaturePhone;
 }
 
-export enum Class {
-  Deportes = "deportes",
-  Empty = "",
-  Espn = "espn",
-  Espncricinfo = "espncricinfo",
-}
-
 export interface PurpleFeaturePhone {
-  name: FeaturePhoneName;
+  name: string;
   width: number;
   height: number;
-  class?: SectionEnum;
-}
-
-export enum FeaturePhoneName {
-  EspnLogo = "espn-logo",
-  EspndeportesLogo = "espndeportes-logo",
-  LogoCricinfo1261X = "logo-cricinfo-126@1x",
+  class?: string;
 }
 
 export interface ConfigSportBranding {
-  sport: BolaDePrataEnum;
-  image: ImageEnum;
+  sport: string;
+  image: string;
   url?: string;
-}
-
-export enum ImageEnum {
-  ESPNcomPowerbyEspnw = "ESPNcom-powerby-espnw",
-  EspncomApresentadoporEspnw = "espncom-apresentadopor-espnw",
-  EspncomPresentadoporEspnw = "espncom-presentadopor-espnw",
-  EspnsslaPresentadoporPolo = "espnssla-presentadopor-polo",
-  EspnsslaPresentadoporTenis = "espnssla-presentadopor-tenis",
-  LogoDeportesScrum = "logo-deportes-scrum",
-  LogoUkCricinfo = "logo-uk-cricinfo",
-  LogoUkFc = "logo-uk-fc",
-  LogoUkScrum = "logo-uk-scrum",
-}
-
-export enum BolaDePrataEnum {
-  Cricket = "cricket",
-  Espnw = "espnw",
-  Ncaaw = "ncaaw",
-  Ncw = "ncw",
-  Polo = "polo",
-  Rugby = "rugby",
-  Soccer = "soccer",
-  Tennis = "tennis",
-  Wnba = "wnba",
-  Womenbb = "womenbb",
 }
 
 export interface ConfigSportReplacements {
@@ -1257,7 +989,7 @@ export interface ConfigSportReplacements {
 
 export interface Taboola {
   enabled: boolean;
-  publisher: Publisher;
+  publisher: string;
   index: GamepackageClass;
   scoreboard: GamepackageClass;
   standings: GamepackageClass;
@@ -1271,49 +1003,12 @@ export interface Taboola {
 }
 
 export interface GamepackageClass {
-  type: ClubhouseType;
-  mode: Mode;
-  placement: Placement;
-  target_type?: TargetType;
-  mode_webview?: ModeWebview;
-  targetType?: TargetType;
-}
-
-export enum Mode {
-  RecReel2N5AHP = "rec-reel-2n5-a-hp",
-  Thumbnails1X3 = "thumbnails-1x3",
-  Thumbnails3X1A = "thumbnails-3x1-a",
-  Thumbnails3X1B = "thumbnails-3x1-b",
-  Thumbnails3X2A = "thumbnails-3x2-a",
-}
-
-export enum ModeWebview {
-  Thumbnails2X1 = "thumbnails-2x1",
-  Thumbnails2X2 = "thumbnails-2x2",
-}
-
-export enum Placement {
-  BelowArticleThumbnails = "Below Article Thumbnails",
-  BelowContentThumbnails = "Below Content Thumbnails",
-  BelowSectionFrontThumbnails3X1B = "Below Section Front Thumbnails 3x1b",
-  RecoReelSportsIndex = "Reco Reel Sports Index",
-  RightRailThumbnails = "Right Rail Thumbnails",
-}
-
-export enum TargetType {
-  Mix = "mix",
-}
-
-export enum ClubhouseType {
-  Article = "article",
-  Category = "category",
-  Homepage = "homepage",
-  Other = "other",
-  RightRail = "right-rail",
-}
-
-export enum Publisher {
-  EspnNetwork = "espn-network",
+  type: string;
+  mode: string;
+  placement: string;
+  target_type?: string;
+  mode_webview?: string;
+  targetType?: string;
 }
 
 export interface TaboolaReco {
@@ -1363,41 +1058,16 @@ export interface TaboolaRootToSportLabel {
 }
 
 export interface Temperature {
-  scale: Scale;
-  symbol: Symbol;
-}
-
-export enum Scale {
-  Celsius = "celsius",
-  Fahrenheit = "fahrenheit",
-}
-
-export enum Symbol {
-  DegC = "&deg; C",
-  DegF = "&deg; F",
+  scale: string;
+  symbol: string;
 }
 
 export interface Tickets {
   enabled: boolean;
-  provider: TicketsProvider;
+  provider: string;
   baseUrl: string;
-  callToAction: CallToAction;
-  trackSection: TrackSection;
-}
-
-export enum CallToAction {
-  BoletosEnVividSeats = "Boletos en Vivid Seats",
-  BuyOnVividSeats = "Buy on Vivid Seats",
-  Empty = "",
-}
-
-export enum TicketsProvider {
-  Empty = "",
-  VividSeats = "VividSeats",
-}
-
-export enum TrackSection {
-  Vivid = "vivid",
+  callToAction: string;
+  trackSection: string;
 }
 
 export interface ConfigTier2NavIDS {
@@ -1582,7 +1252,7 @@ export interface ConfigTier2NavIDS {
   btsport: number;
   betting?: number;
   "asian-games"?: number;
-  scoreboard?: ScoreboardClass;
+  scoreboard?: Scoreboard;
   "kaleidoscope-fifa-videos"?: number;
   "espn-shorts-videos"?: number;
   officesportsquiz?: number;
@@ -1606,7 +1276,7 @@ export interface PurpleLeague {
   cricket?: number;
 }
 
-export interface ScoreboardClass {
+export interface Scoreboard {
   cricket: number;
   "nba-development": number;
 }
@@ -1754,7 +1424,7 @@ export interface Configs {
 export interface EspnEsArClass {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -1817,169 +1487,44 @@ export interface EspnEsArBetting {
 }
 
 export interface EspnEsArDateTime {
-  "h:mm a z": HMmAZ;
-  "M/d": MDEnum;
-  "ddd, M/D": DddMD;
-  "M/D": MD;
-  "M/D, LT"?: MDLt;
-  "h:mm a": HMmA;
-  "MMMM d, yyyy": MMMMDYyyy;
-  "MMM d, yyyy": MMMDYyyyEnum;
-  "MMM D, YYYY": MmmDYyyy;
-  "MMM D": MmmD;
-  "MMMM D": MmmmD;
-  "M/d/yyyy": MDYyyyEnum;
-  "M/D/YYYY": MDYyyy;
-  "M/d/yy": MDYy;
-  "MM/DD/YYYY": MmDDYyyy;
-  "MMMM D, YYYY": MmmdYyyy;
-  "MMM DD YYYY": MmmdYyyy;
-  "MMMM DO YYYY": MmmmDoYyyy;
-  "MMM DD": MmmD;
-  "MMMM d": MMMMD;
-  "dddd, MMMM Do": DdddMMMMDo;
-  "DDDD, M/D": DdddMD;
-  "dddd, M/D": DdddMDEnum;
-  E: E;
-  "EEE, d MMM yyyy HH:mm:ss"?: EEEDMMMYyyyHHMmSs;
-  "EEEE, MMMM d": EEEEMMMMD;
-  "EEEE, MMMM d, yyyy": EEEEMMMMDYyyy;
-  "EEEE, MMM d": EEEEMMMD;
-  "MMM d, yyyy, hh:mm a": MMMDYyyyHhMmA;
-  "M-d-yyyy h:mm:ss": MDYyyyHMmSs;
-  firstDayOfWeek: FirstDayOfWeek;
+  "h:mm a z": string;
+  "M/d": string;
+  "ddd, M/D": string;
+  "M/D": string;
+  "M/D, LT"?: string;
+  "h:mm a": string;
+  "MMMM d, yyyy": string;
+  "MMM d, yyyy": string;
+  "MMM D, YYYY": string;
+  "MMM D": string;
+  "MMMM D": string;
+  "M/d/yyyy": string;
+  "M/D/YYYY": string;
+  "M/d/yy": string;
+  "MM/DD/YYYY": string;
+  "MMMM D, YYYY": string;
+  "MMM DD YYYY": string;
+  "MMMM DO YYYY": string;
+  "MMM DD": string;
+  "MMMM d": string;
+  "dddd, MMMM Do": string;
+  "DDDD, M/D": string;
+  "dddd, M/D": string;
+  E: string;
+  "EEE, d MMM yyyy HH:mm:ss"?: string;
+  "EEEE, MMMM d": string;
+  "EEEE, MMMM d, yyyy": string;
+  "EEEE, MMM d": string;
+  "MMM d, yyyy, hh:mm a": string;
+  "M-d-yyyy h:mm:ss": string;
+  firstDayOfWeek: string;
   timeZone: string;
-  timeZoneBucket: TimeZoneBucket;
+  timeZoneBucket: string;
   displayTimeZone: boolean;
-  defaultFormat: MMMDYyyyEnum;
+  defaultFormat: string;
   timeZoneString: string;
   age: Age;
-  "h:mm A"?: HMmA;
-}
-
-export enum DdddMD {
-  DdddDM = "DDDD, D/M",
-  DdddMDDdddDM = "DDDD D/M",
-}
-
-export enum E {
-  E = "E",
-}
-
-export enum EEEDMMMYyyyHHMmSs {
-  EEEDMMMYyyyHHMmSs = "EEE, d MMM yyyy HH:mm:ss",
-}
-
-export enum EEEEMMMD {
-  EEEEDDeMMM = "EEEE, d ' de ' MMM",
-  EEEEDMMM = "EEEE d  MMM",
-}
-
-export enum EEEEMMMMD {
-  EEEEDDeMMMM = "EEEE, d ' de ' MMMM",
-  EEEEDMMMM = "EEEE d MMMM",
-}
-
-export enum EEEEMMMMDYyyy {
-  EEEEDDeMMMMYyyy = "EEEE, d 'de' MMMM, yyyy",
-  EEEEDMMMMYyyy = "EEEE d MMMM, yyyy",
-}
-
-export enum MDYyyyHMmSs {
-  DMYyyyHMmSs = "d-M-yyyy h:mm:ss",
-}
-
-export enum MD {
-  DM = "D/M",
-}
-
-export enum MDLt {
-  DMHHMm = "D/M, HH:mm",
-  DMLt = "D/M, LT",
-}
-
-export enum MDYyyy {
-  DMYyyy = "D/M/YYYY",
-}
-
-export enum MDYy {
-  DMYy = "d/M/yy",
-}
-
-export enum MDYyyyEnum {
-  DMYyyy = "d/M/yyyy",
-}
-
-export enum MmDDYyyy {
-  DDMmYyyy = "DD/MM/YYYY",
-}
-
-export enum MmmD {
-  DDeMMM = "D [de] MMM",
-  DMmm = "D MMM",
-}
-
-export enum MmmDYyyy {
-  DMmmYyyy = "D MMM, YYYY",
-  MmmDYyyyDMmmYyyy = "D MMM YYYY",
-}
-
-export enum MmmdYyyy {
-  DDeMMMMYYYY = "D [de] MMMM, YYYY",
-  DMmmmYyyy = "D MMMM, YYYY",
-}
-
-export enum MMMDYyyyEnum {
-  DMMMYyyy = "d MMM, yyyy",
-  MmmDYyyyDMMMYyyy = "d MMM yyyy",
-}
-
-export enum MMMDYyyyHhMmA {
-  DDeMMMYyyyHHMm = "d ' de ' MMM, yyyy, HH:mm",
-  DMMMYyyyHHMm = "d MMM yyyy, HH:mm",
-}
-
-export enum MmmmD {
-  DMmmm = "D MMMM",
-}
-
-export enum MmmmDoYyyy {
-  DoMmmmYyyy = "DO MMMM YYYY",
-}
-
-export enum MMMMD {
-  DMMMM = "d MMMM",
-}
-
-export enum MMMMDYyyy {
-  DMMMMYyyy = "d MMMM, yyyy",
-  MMMMDYyyyDMMMMYyyy = "d MMMM yyyy",
-}
-
-export enum DddMD {
-  DddDM = "ddd, D/M",
-}
-
-export enum DdddMDEnum {
-  DdddDM = "dddd, D/M",
-  DdddMDDdddDM = "dddd D/M",
-}
-
-export enum DdddMMMMDo {
-  DdddDoDeMMMM = "dddd, Do [de] MMMM",
-  DdddDoMMMM = "dddd Do MMMM",
-}
-
-export enum HMmA {
-  HHMm = "HH:mm",
-  HMmA = "h:mm a",
-  KkMm = "kk:mm",
-}
-
-export enum HMmAZ {
-  HHMm = "HH:mm",
-  HMmAZ = "h:mm a z",
-  KkMm = "kk:mm",
+  "h:mm A"?: string;
 }
 
 export interface EspnEsArFeeds {
@@ -1991,8 +1536,8 @@ export interface FluffyGooglenews {
 }
 
 export interface EspnEsArOmniture {
-  site: string;
   enabled: boolean;
+  site: string;
 }
 
 export interface EspnEsArPremiumSettings {
@@ -2165,316 +1710,77 @@ export interface EspnEsArURIRewrites {
 }
 
 export interface PurpleParamKeys {
-  juegoId: ID;
-  fecha: Fecha;
-  nombre: Nombre;
-  partido: Partid;
-  liga: Liga;
-  tipodetemporada: Tipodetemporada;
-  ano: Ano;
-  semana: Semana;
-  deportes: Deportes;
-  evento: Evento;
-  torneo: Torneo;
-  deportista: Deportista;
-  vista: Vista;
-  pais: Pais;
-  paisId: PaisID;
-  pagina: Pagina;
-  continuo: Continuo;
-  ronda?: RondeEnum;
-  posicion?: PositieEnum;
-}
-
-export enum Ano {
-  Year = "year",
-}
-
-export enum Continuo {
-  Continuous = "continuous",
-}
-
-export enum Deportes {
-  Discipline = "discipline",
-}
-
-export enum Deportista {
-  Athlete = "athlete",
-}
-
-export enum Evento {
-  Event = "event",
-}
-
-export enum Fecha {
-  Date = "date",
-}
-
-export enum ID {
-  GameID = "gameId",
-}
-
-export enum Liga {
-  League = "league",
-}
-
-export enum Nombre {
-  Name = "name",
-}
-
-export enum Pagina {
-  Page = "page",
-}
-
-export enum Pais {
-  Country = "country",
-}
-
-export enum PaisID {
-  CountryID = "countryId",
-}
-
-export enum Partid {
-  GameID = "gameID",
-}
-
-export enum PositieEnum {
-  Position = "position",
-}
-
-export enum RondeEnum {
-  Round = "round",
-}
-
-export enum Semana {
-  Week = "week",
-}
-
-export enum Tipodetemporada {
-  Seasontype = "seasontype",
-}
-
-export enum Torneo {
-  TournamentID = "tournamentId",
-}
-
-export enum Vista {
-  View = "view",
+  juegoId: string;
+  fecha: string;
+  nombre: string;
+  partido: string;
+  liga: string;
+  tipodetemporada: string;
+  ano: string;
+  semana: string;
+  deportes: string;
+  evento: string;
+  torneo: string;
+  deportista: string;
+  vista: string;
+  pais: string;
+  paisId: string;
+  pagina: string;
+  continuo: string;
+  ronda?: string;
+  posicion?: string;
 }
 
 export interface PurpleParamValues {
-  liga: Liga;
-  todo: Todo;
-  deportistas: Deportistas;
-  paises: Paises;
-}
-
-export enum Deportistas {
-  Athletes = "athletes",
-}
-
-export enum Paises {
-  Countries = "countries",
-}
-
-export enum Todo {
-  All = "all",
+  liga: string;
+  todo: string;
+  deportistas: string;
+  paises: string;
 }
 
 export interface PurplePathSegments {
-  reporte: Reporte;
-  juego: Juego;
-  equipo: Equipo;
-  plantel: Plantel;
-  estadisticas: Estadisticas;
-  calendario: Calendario;
-  estadio: Estadio;
-  profundidad: Profundidad;
-  conversacion: Conversacion;
-  ficha: Ficha;
-  previa: Previa;
-  partido: Partido;
-  jugadas: Jugadas;
-  cronica: Cronica;
-  fotos: Fotos;
-  duelo: Duelo;
-  jugador: Jugador;
-  posiciones: AuthorsEnum;
-  lesiones: Lesiones;
-  bateo: Bateo;
-  grilla: Grilla;
-  piloto: Piloto;
-  resultados: Resultados;
-  liga: Liga;
-  ligas: Ligas;
-  nota: Nota;
-  comentario: Comentario;
-  alineacion: Alineacion;
-  numeritos: Numeritos;
-  medallas: Meda;
-  deportes: LeagueElement;
-  deportistas: Deportistas;
-  lideres: Lideres;
-  envivo: Envivo;
-  ronda: RondesEnum;
-  equipos: LeagueElement;
-  posicion: PositiesEnum;
-  mejordisponible: Mejordisponible;
-  proyeccion: Pro;
-  noticias: Noticias;
-  noticiasdelequipo: Noticiasdelequipo;
-  busqueda: Busqueda;
-}
-
-export enum Alineacion {
-  Lineups = "lineups",
-}
-
-export enum Bateo {
-  Batting = "batting",
-}
-
-export enum Busqueda {
-  Search = "search",
-}
-
-export enum Calendario {
-  Schedule = "schedule",
-}
-
-export enum Comentario {
-  Commentary = "commentary",
-}
-
-export enum Conversacion {
-  Conversation = "conversation",
-}
-
-export enum Cronica {
-  Recap = "recap",
-}
-
-export enum Duelo {
-  Matchup = "matchup",
-}
-
-export enum Envivo {
-  Live = "live",
-}
-
-export enum Equipo {
-  Conference = "conference",
-  Group = "group",
-  Label = "label",
-  Team = "team",
-}
-
-export enum Estadio {
-  Stadium = "stadium",
-}
-
-export enum Estadisticas {
-  Stats = "stats",
-}
-
-export enum Ficha {
-  Boxscore = "boxscore",
-}
-
-export enum Fotos {
-  Photos = "photos",
-}
-
-export enum Grilla {
-  Grid = "grid",
-}
-
-export enum Juego {
-  Game = "game",
-}
-
-export enum Jugadas {
-  Playbyplay = "playbyplay",
-}
-
-export enum Jugador {
-  Player = "player",
-}
-
-export enum Lesiones {
-  Injuries = "injuries",
-}
-
-export enum Lideres {
-  Leaderboard = "leaderboard",
-}
-
-export enum Ligas {
-  Leagues = "leagues",
-}
-
-export enum Meda {
-  Medals = "medals",
-}
-
-export enum Mejordisponible {
-  Bestavailable = "bestavailable",
-}
-
-export enum Nota {
-  Story = "story",
-}
-
-export enum Noticias {
-  News = "news",
-}
-
-export enum Noticiasdelequipo {
-  Teamnews = "teamnews",
-}
-
-export enum Numeritos {
-  Matchstats = "matchstats",
-}
-
-export enum Partido {
-  Match = "match",
-}
-
-export enum Piloto {
-  Driver = "driver",
-}
-
-export enum Plantel {
-  Roster = "roster",
-}
-
-export enum PositiesEnum {
-  Positions = "positions",
-}
-
-export enum Previa {
-  Preview = "preview",
-}
-
-export enum Profundidad {
-  Depth = "depth",
-}
-
-export enum Pro {
-  Projections = "projections",
-}
-
-export enum Reporte {
-  Report = "report",
-}
-
-export enum Resultados {
-  Scoreboard = "scoreboard",
-}
-
-export enum RondesEnum {
-  Rounds = "rounds",
+  reporte: string;
+  juego: string;
+  equipo: string;
+  plantel: string;
+  estadisticas: string;
+  calendario: string;
+  estadio: string;
+  profundidad: string;
+  conversacion: string;
+  ficha: string;
+  previa: string;
+  partido: string;
+  jugadas: string;
+  cronica: string;
+  fotos: string;
+  duelo: string;
+  jugador: string;
+  posiciones: string;
+  lesiones: string;
+  bateo: string;
+  grilla: string;
+  piloto: string;
+  resultados: string;
+  liga: string;
+  ligas: string;
+  nota: string;
+  comentario: string;
+  alineacion: string;
+  numeritos: string;
+  medallas: string;
+  deportes: string;
+  deportistas: string;
+  lideres: string;
+  envivo: string;
+  ronda: string;
+  equipos: string;
+  posicion: string;
+  mejordisponible: string;
+  proyeccion: string;
+  noticias: string;
+  noticiasdelequipo: string;
+  busqueda: string;
 }
 
 export interface PurpleRoots {
@@ -2488,36 +1794,20 @@ export interface PurpleUrls {
 }
 
 export interface TentacledToEdition {
-  "/futbol-americano/nfl/": FutbolAmericanoNfl;
-  "/beisbol/mlb/": Beisbol;
-  "/basquetbol/nba/": Basquetbol;
-  "/basquetbol/fiba/": Basquetbol;
-  "/football/club"?: FootballClub;
+  "/futbol-americano/nfl/": string;
+  "/beisbol/mlb/": string;
+  "/basquetbol/nba/": string;
+  "/basquetbol/fiba/": string;
+  "/football/club"?: string;
   "/basquetbol/wnba/"?: string;
-  "/beisbol/serie-del-caribe/": Beisbol;
-  "/beisbol/clasico-mundial-beisbol/": Beisbol;
-}
-
-export enum Basquetbol {
-  Basquetbol = "/basquetbol/",
-}
-
-export enum Beisbol {
-  Beisbol = "/beisbol/",
-}
-
-export enum FootballClub {
-  FutbolEquipo = "/futbol/equipo",
-}
-
-export enum FutbolAmericanoNfl {
-  FutbolAmericano = "/futbol-americano/",
+  "/beisbol/serie-del-caribe/": string;
+  "/beisbol/clasico-mundial-beisbol/": string;
 }
 
 export interface EspnEsCl {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -2576,7 +1866,7 @@ export interface EspnEsCl {
 export interface EspnEsCo {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -2642,18 +1932,13 @@ export interface EspnEsCoBetting {
 
 export interface Game {
   enabled: boolean;
-  provider: GameProvider;
-}
-
-export enum GameProvider {
-  Bet365 = "Bet 365",
-  Tab = "tab",
+  provider: string;
 }
 
 export interface EspnEsCRClass {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -2716,7 +2001,7 @@ export interface EspnEsCRAds {
   "dev-config": string;
   "qa-config": string;
   "prod-config": string;
-  outputType: AdsOutputType;
+  outputType: string;
   featurePhone: AdsFeaturePhone;
   disableAdRequestOnBackgroundedVideo?: boolean;
 }
@@ -2734,7 +2019,7 @@ export interface EspnEsCRSiteLogo {
 }
 
 export interface FluffyFeaturePhone {
-  name: FeaturePhoneName;
+  name: string;
   width: string;
   height: string;
 }
@@ -2758,7 +2043,7 @@ export interface FluffyClubhouse {
 export interface EspnEsDoClass {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -2818,7 +2103,7 @@ export interface EspnEsDoClass {
 export interface EspnEsEc {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -2877,7 +2162,7 @@ export interface EspnEsEc {
 export interface EspnEsEs {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -2935,7 +2220,7 @@ export interface EspnEsEs {
 export interface EspnEsMX {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -2995,7 +2280,7 @@ export interface EspnEsMX {
 export interface EspnEsUs {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -3056,7 +2341,7 @@ export interface EspnEsUs {
 export interface EspnNlNl {
   editionSettings: EspnNlNlEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -3113,9 +2398,9 @@ export interface EspnNlNl {
 
 export interface EspnNlNlEditionSettings {
   key: string;
-  site: TwitterSite;
-  language: Lang;
-  country: Lang;
+  site: string;
+  language: string;
+  country: string;
   domain: string;
   editionSiteId: number;
   https: boolean;
@@ -3211,47 +2496,47 @@ export interface EspnNlNlURIRewrites {
 }
 
 export interface FluffyParamKeys {
-  wedstrijdId: ID;
-  competitie: Liga;
-  datum: Fecha;
-  naam: Nombre;
-  toernooiId: Torneo;
-  atleet: Deportista;
-  ronde: RondeEnum;
-  positie: PositieEnum;
+  wedstrijdId: string;
+  competitie: string;
+  datum: string;
+  naam: string;
+  toernooiId: string;
+  atleet: string;
+  ronde: string;
+  positie: string;
 }
 
 export interface FluffyParamValues {
-  competitie: Liga;
-  atleten: Deportistas;
+  competitie: string;
+  atleten: string;
 }
 
 export interface FluffyPathSegments {
-  stand: AuthorsEnum;
-  verslag: Reporte;
-  selectie: Plantel;
-  statistieken: Estadisticas;
-  speelkalender: Calendario;
-  voorbeschouwing: Previa;
-  wedstrijd: Partido;
-  speler: Jugador;
-  blessures: Lesiones;
-  scorebord: Resultados;
-  competitie: Liga;
-  competities: Ligas;
-  artikel: Nota;
-  minuutperminuut: Comentario;
-  wedstrijdstatistieken: Numeritos;
-  atleten: Deportistas;
-  medailles: Meda;
-  sporten: LeagueElement;
-  nieuws: Noticias;
-  rondes: RondesEnum;
-  posities: PositiesEnum;
+  stand: string;
+  verslag: string;
+  selectie: string;
+  statistieken: string;
+  speelkalender: string;
+  voorbeschouwing: string;
+  wedstrijd: string;
+  speler: string;
+  blessures: string;
+  scorebord: string;
+  competitie: string;
+  competities: string;
+  artikel: string;
+  minuutperminuut: string;
+  wedstrijdstatistieken: string;
+  atleten: string;
+  medailles: string;
+  sporten: string;
+  nieuws: string;
+  rondes: string;
+  posities: string;
   draftcast: string;
-  bestbeschikbaar: Mejordisponible;
-  projecties: Pro;
-  zoeken: Busqueda;
+  bestbeschikbaar: string;
+  projecties: string;
+  zoeken: string;
 }
 
 export interface ParamKeys {
@@ -3273,7 +2558,7 @@ export interface WatchMeta {
 export interface EspnPtBr {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnEsArDateTime;
   numberFormat: NumberFormat;
@@ -3332,8 +2617,8 @@ export interface EspnPtBr {
 }
 
 export interface EspnPtBrMeta {
-  titleBranding: TitleBranding;
-  defaultMetaImage: DefaultMetaImage;
+  titleBranding: string;
+  defaultMetaImage: string;
   social: FluffySocial;
   titleBrandingWithDomain?: string;
 }
@@ -3345,24 +2630,24 @@ export interface FluffySocial {
 
 export interface FluffyTwitter {
   twitterId: string;
-  card: Card;
+  card: string;
   app_id_iphone: string;
-  site: TwitterSite;
-  app_name_googleplay: TwitterAppNameGoogleplay;
+  site: string;
+  app_name_googleplay: string;
   app_id_googleplay: string;
-  app_name_iphone: TwitterAppNameGoogleplay;
-  language: Lang;
+  app_name_iphone: string;
+  language: string;
 }
 
 export interface EspnPtBrSportReplacements {
   athletics: string;
   f1: string;
   cycling: string;
-  "bola-de-prata": BolaDePrataEnum;
-  "data-espn": BolaDePrataEnum;
-  "ranking-dos-treinadores": BolaDePrataEnum;
+  "bola-de-prata": string;
+  "data-espn": string;
+  "ranking-dos-treinadores": string;
   motogp: string;
-  "selecao-brasileira": BolaDePrataEnum;
+  "selecao-brasileira": string;
   swimming: string;
   volleyball: string;
 }
@@ -3376,82 +2661,82 @@ export interface EspnPtBrURIRewrites {
 }
 
 export interface TentacledParamKeys {
-  jogoId: ID;
-  data: Fecha;
-  nome: Nombre;
-  partida: Partid;
-  tipodetemporada: Tipodetemporada;
-  ano: Ano;
-  semana: Semana;
-  modalidade: Deportes;
-  evento: Evento;
-  tournamentId: Torneo;
-  atleta: Deportista;
-  "vs-division": Vista;
-  pais: Pais;
-  paisId: PaisID;
-  pagina: Pagina;
-  continuo: Continuo;
-  rodada: RondeEnum;
-  posicao: PositieEnum;
-  time: Equipo;
-  ligas: Ligas;
-  liga: Liga;
+  jogoId: string;
+  data: string;
+  nome: string;
+  partida: string;
+  tipodetemporada: string;
+  ano: string;
+  semana: string;
+  modalidade: string;
+  evento: string;
+  tournamentId: string;
+  atleta: string;
+  "vs-division": string;
+  pais: string;
+  paisId: string;
+  pagina: string;
+  continuo: string;
+  rodada: string;
+  posicao: string;
+  time: string;
+  ligas: string;
+  liga: string;
 }
 
 export interface TentacledParamValues {
-  liga: Liga;
-  ligas: Ligas;
-  todos: Todo;
-  atletas: Deportistas;
-  paises: Paises;
+  liga: string;
+  ligas: string;
+  todos: string;
+  atletas: string;
+  paises: string;
 }
 
 export interface TentacledPathSegments {
-  artigo: Nota;
-  atletas: Deportistas;
-  "bate-papo": Conversacion;
-  calendario: Calendario;
-  classificacao: AuthorsEnum;
+  artigo: string;
+  atletas: string;
+  "bate-papo": string;
+  calendario: string;
+  classificacao: string;
   clipe: string;
-  comentario: Comentario;
-  confronto: Duelo;
-  cronica: Cronica;
-  deportes: LeagueElement;
-  fotos: Fotos;
-  elenco: Plantel;
+  comentario: string;
+  confronto: string;
+  cronica: string;
+  deportes: string;
+  fotos: string;
+  elenco: string;
   escalacao: string;
-  escalacoes: Alineacion;
-  estadio: Estadio;
-  estatisticas: Estadisticas;
-  jogador: Jugador;
-  jogo: Juego;
-  lesoes: Lesiones;
-  liga: Liga;
-  ligas: Ligas;
-  medalhas: Meda;
-  melhordisponivel: Mejordisponible;
-  projecao: Pro;
-  "minuto-a-minuto": Jugadas;
+  escalacoes: string;
+  estadio: string;
+  estatisticas: string;
+  jogador: string;
+  jogo: string;
+  lesoes: string;
+  liga: string;
+  ligas: string;
+  medalhas: string;
+  melhordisponivel: string;
+  projecao: string;
+  "minuto-a-minuto": string;
   olimpiada: string;
-  partida: Partido;
-  "partida-estatisticas": Numeritos;
-  piloto: Piloto;
-  placar: Ficha;
-  posicao: PositiesEnum;
-  previa: Previa;
-  profundidad: Profundidad;
-  noticias: Noticias;
-  ranking: Lideres;
-  rebatendo: Bateo;
-  reporte: Reporte;
-  resultados: Resultados;
-  rodada: RondesEnum;
-  temporeal: Envivo;
-  time: Equipo;
-  times: LeagueElement;
+  partida: string;
+  "partida-estatisticas": string;
+  piloto: string;
+  placar: string;
+  posicao: string;
+  previa: string;
+  profundidad: string;
+  noticias: string;
+  ranking: string;
+  rebatendo: string;
+  reporte: string;
+  resultados: string;
+  rodada: string;
+  temporeal: string;
+  time: string;
+  times: string;
   verao: string;
-  busqueda: Busqueda;
+  busqueda: string;
 }
 
 export interface FluffyUrls {
@@ -3466,7 +2751,7 @@ export interface StickyToEdition {
 export interface EspnauEn {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -3524,7 +2809,7 @@ export interface EspnauEn {
 
 export interface EspnauEnBetting {
   enabled: boolean;
-  provider: GameProvider;
+  provider: string;
   providerId: string;
   game: Game;
   incontentstrip: boolean;
@@ -3542,62 +2827,36 @@ export interface BettingLinks {
 }
 
 export interface EspnauEnDateTime {
-  long: DateTimeLong;
-  medium: Medium;
-  short: MDEnum;
-  timeFormat: TimeFormat;
-  firstDayOfWeek: FirstDayOfWeek;
+  long: string;
+  medium: string;
+  short: string;
+  timeFormat: string;
+  firstDayOfWeek: string;
   timeZone: string;
-  defaultFormat: MMMDYyyyEnum;
+  defaultFormat: string;
   displayTimeZone?: boolean;
-  timeZoneString: TimeZoneString;
+  timeZoneString: string;
   timeZoneBucket: string;
-  "MMM D, YYYY": MmmDYyyy;
-  "M/D/YYYY": MDYyyy;
-  "MM/DD/YYYY": MmDDYyyy;
-  MMDDYYYY: Mmddyyyy;
-  "MMMM Do YYYY": MMMMDoYYYY;
-  "dddd, MMMM Do YYYY": DdddMMMMDoYYYY;
+  "MMM D, YYYY": string;
+  "M/D/YYYY": string;
+  "MM/DD/YYYY": string;
+  MMDDYYYY: string;
+  "MMMM Do YYYY": string;
+  "dddd, MMMM Do YYYY": string;
   "EEEE, MMMM d"?: string;
   "dddd, MMMM Do"?: string;
-  "ddd, MMM D YYYY": DddMMMDYYYY;
-  "ddd, M/D"?: DddMD;
-  "M/D": MD;
-  "M/D, LT"?: MDLt;
-  "MMMM D, YYYY": MmmmDYyyy;
-  "dddd, M/D": DdddMDEnum;
-  "MMM D"?: MmmD;
-  "MMMM D"?: MmmmD;
+  "ddd, MMM D YYYY": string;
+  "ddd, M/D"?: string;
+  "M/D": string;
+  "M/D, LT"?: string;
+  "MMMM D, YYYY": string;
+  "dddd, M/D": string;
+  "MMM D"?: string;
+  "MMMM D"?: string;
   age: Age;
   timeZoneDstOffset?: number;
   timeZoneDstString?: string;
   "M/D LT"?: string;
-}
-
-export enum Mmddyyyy {
-  Ddmmyyyy = "DDMMYYYY",
-}
-
-export enum MmmmDYyyy {
-  DMmmmYyyy = "D MMMM YYYY",
-}
-
-export enum MMMMDoYYYY {
-  DoMMMMYYYY = "Do MMMM YYYY",
-}
-
-export enum DddMMMDYYYY {
-  DddDMMMYYYY = "ddd, D MMM YYYY",
-}
-
-export enum DdddMMMMDoYYYY {
-  DdddDoMMMMYYYY = "dddd, Do MMMM YYYY",
-}
-
-export enum TimeZoneString {
-  Gmt = "GMT",
-  Ist = "IST",
-  Pht = "PHT",
 }
 
 export interface EspnauEnOmniture {
@@ -3620,7 +2879,7 @@ export interface EspnauEnURIRewrites {
 
 export interface FluffyRoots {
   toEdition: IndigoToEdition;
-  toEnglish: ToEnglishClass;
+  toEnglish: TentacledRoots;
 }
 
 export interface IndigoToEdition {
@@ -3640,10 +2899,10 @@ export interface IndigoToEdition {
   "/soccer/team"?: string;
 }
 
-export interface ToEnglishClass {
+export interface TentacledRoots {
   "/olympics/summer/football"?: string;
   "/college-football/": string;
-  "/football/"?: string;
+  "/football/": string;
   "/racing/nascar/": string;
   "/racing/": string;
   "/mens-college-basketball/": string;
@@ -3664,19 +2923,15 @@ export interface ToEnglishClass {
   "/espn/rss/football/"?: string;
   "/nba-development/"?: string;
   "/american-football/"?: string;
-  "/american-fb/"?: string;
+  "/oly/summer/gymnastics/"?: string;
+  "/oly/summer/cycling/"?: string;
   "/football/club"?: string;
-  "/sports/endurance/"?: string;
-  "/losangeles/"?: string;
-  "/newyork/"?: string;
-  "/espn/onenacion/"?: string;
-  "/football/team"?: string;
 }
 
 export interface EspncricinfoEnAuClass {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -3735,75 +2990,23 @@ export interface EspncricinfoEnAuBetting {
 }
 
 export interface DefaultSearchParams {
-  sport: SportElement;
+  sport: string;
 }
 
 export interface EspncricinfoEnAuFallback {
-  "cricket-world-cup-timeline": CricketWorldCupTimeline;
-  "cricket-world-cup-timeline-1975": CricketWorldCupTimeline1975;
-  "fantasy-pick": FantasyPick;
-  "cricket-world-cup-timeline-1987": CricketWorldCupTimeline1987;
-  "cricket-world-cup-timeline-1999": CricketWorldCupTimeline1999;
-  "cricket-world-cup-timeline-2015": CricketWorldCupTimeline2015;
-  "cricket-world-cup-timeline-1983": CricketWorldCupTimeline1983;
-  "cricket-world-cup-timeline-1996": CricketWorldCupTimeline1996;
-  "cricket-world-cup-timeline-2007": CricketWorldCupTimeline2007;
-  "cricket-world-cup-timeline-2011": CricketWorldCupTimeline2011;
-  "cricket-world-cup-timeline-1992": CricketWorldCupTimeline1992;
-  "cricket-world-cup-timeline-2003": CricketWorldCupTimeline2003;
-  "cricket-world-cup-timeline-1979": CricketWorldCupTimeline1979;
-}
-
-export enum CricketWorldCupTimeline {
-  EspncricinfoEnUsCricketWorldCupTimelineIndex = "espncricinfo-en-us-cricket-world-cup-timeline-index",
-}
-
-export enum CricketWorldCupTimeline1975 {
-  EspncricinfoEnUsCricketWorldCupTimeline1975Index = "espncricinfo-en-us-cricket-world-cup-timeline-1975-index",
-}
-
-export enum CricketWorldCupTimeline1979 {
-  EspncricinfoEnUsCricketWorldCupTimeline1979Index = "espncricinfo-en-us-cricket-world-cup-timeline-1979-index",
-}
-
-export enum CricketWorldCupTimeline1983 {
-  EspncricinfoEnUsCricketWorldCupTimeline1983Index = "espncricinfo-en-us-cricket-world-cup-timeline-1983-index",
-}
-
-export enum CricketWorldCupTimeline1987 {
-  EspncricinfoEnUsCricketWorldCupTimeline1987Index = "espncricinfo-en-us-cricket-world-cup-timeline-1987-index",
-}
-
-export enum CricketWorldCupTimeline1992 {
-  EspncricinfoEnUsCricketWorldCupTimeline1992Index = "espncricinfo-en-us-cricket-world-cup-timeline-1992-index",
-}
-
-export enum CricketWorldCupTimeline1996 {
-  EspncricinfoEnUsCricketWorldCupTimeline1996Index = "espncricinfo-en-us-cricket-world-cup-timeline-1996-index",
-}
-
-export enum CricketWorldCupTimeline1999 {
-  EspncricinfoEnUsCricketWorldCupTimeline1999Index = "espncricinfo-en-us-cricket-world-cup-timeline-1999-index",
-}
-
-export enum CricketWorldCupTimeline2003 {
-  EspncricinfoEnUsCricketWorldCupTimeline2003Index = "espncricinfo-en-us-cricket-world-cup-timeline-2003-index",
-}
-
-export enum CricketWorldCupTimeline2007 {
-  EspncricinfoEnUsCricketWorldCupTimeline2007Index = "espncricinfo-en-us-cricket-world-cup-timeline-2007-index",
-}
-
-export enum CricketWorldCupTimeline2011 {
-  EspncricinfoEnUsCricketWorldCupTimeline2011Index = "espncricinfo-en-us-cricket-world-cup-timeline-2011-index",
-}
-
-export enum CricketWorldCupTimeline2015 {
-  EspncricinfoEnUsCricketWorldCupTimeline2015Index = "espncricinfo-en-us-cricket-world-cup-timeline-2015-index",
-}
-
-export enum FantasyPick {
-  EspncricinfoEnInFantasyPickIndex = "espncricinfo-en-in-fantasy-pick-index",
+  "cricket-world-cup-timeline": string;
+  "cricket-world-cup-timeline-1975": string;
+  "fantasy-pick": string;
+  "cricket-world-cup-timeline-1987": string;
+  "cricket-world-cup-timeline-1999": string;
+  "cricket-world-cup-timeline-2015": string;
+  "cricket-world-cup-timeline-1983": string;
+  "cricket-world-cup-timeline-1996": string;
+  "cricket-world-cup-timeline-2007": string;
+  "cricket-world-cup-timeline-2011": string;
+  "cricket-world-cup-timeline-1992": string;
+  "cricket-world-cup-timeline-2003": string;
+  "cricket-world-cup-timeline-1979": string;
 }
 
 export interface EspncricinfoEnAuGameSettings {
@@ -3839,106 +3042,50 @@ export interface EspncricinfoEnAuTier3NavIDS {
 
 export interface EspncricinfoEnAuURIRewrites {
   urls: TentacledUrls;
-  roots: TentacledRoots;
+  roots: StickyRoots;
   pathSegments: StickyPathSegments;
   paramKeys: StickyParamKeys;
   paramValues: PathParams;
 }
 
 export interface StickyParamKeys {
-  series: Liga;
+  series: string;
 }
 
 export interface StickyPathSegments {
-  table: AuthorsEnum;
-  series: Liga;
-  scores: Resultados;
+  table: string;
+  series: string;
+  scores: string;
 }
 
-export interface TentacledRoots {
+export interface StickyRoots {
   toEdition: IndecentToEdition;
   toEnglish: FluffyToEnglish;
 }
 
 export interface IndecentToEdition {
-  "/cricket/leagues/index": CricketLeaguesIndex;
-  "/cricket/league": CricketLeagueEnum;
-  "/cricket/team": CricketTeam;
-  "/cricket/story": CricketStory;
-  "/cricket/series": CricketLeagueEnum;
-  "/cricket/table": CricketStandingsEnum;
-  "/cricket/scoreboard": CricketScoreboardEnum;
-  "/cricket/standings": CricketStandingsEnum;
-  "/cricket/cricketpicks": CricketCricketpicks;
-  "/scoreboard": CricketScoreboardEnum;
-}
-
-export enum CricketCricketpicks {
-  Cricketpicks = "/cricketpicks",
-}
-
-export enum CricketLeagueEnum {
-  Series = "/series",
-}
-
-export enum CricketLeaguesIndex {
-  Series = "/series/",
-}
-
-export enum CricketScoreboardEnum {
-  Scores = "/scores",
-}
-
-export enum CricketStandingsEnum {
-  Table = "/table",
-}
-
-export enum CricketStory {
-  Story = "/story",
-}
-
-export enum CricketTeam {
-  Team = "/team",
+  "/cricket/leagues/index": string;
+  "/cricket/league": string;
+  "/cricket/team": string;
+  "/cricket/story": string;
+  "/cricket/series": string;
+  "/cricket/table": string;
+  "/cricket/scoreboard": string;
+  "/cricket/standings": string;
+  "/cricket/cricketpicks": string;
+  "/scoreboard": string;
 }
 
 export interface FluffyToEnglish {
-  "/series/index": SeriesIndex;
-  "/series": PurpleSeries;
-  "/team": TeamEnum;
-  "/story": Story;
-  "/table": StandingsEnum;
-  "/scores": Score;
-  "/scoreboard": Score;
-  "/standings": StandingsEnum;
-  "/cricketpicks": Cricketpicks;
-}
-
-export enum Cricketpicks {
-  CricketCricketpicks = "/cricket/cricketpicks",
-}
-
-export enum Score {
-  CricketScoreboard = "/cricket/scoreboard",
-}
-
-export enum PurpleSeries {
-  CricketLeague = "/cricket/league",
-}
-
-export enum SeriesIndex {
-  CricketLeaguesIndex = "/cricket/leagues/index",
-}
-
-export enum StandingsEnum {
-  CricketStandings = "/cricket/standings",
-}
-
-export enum Story {
-  CricketStory = "/cricket/story",
-}
-
-export enum TeamEnum {
-  CricketTeam = "/cricket/team",
+  "/series/index": string;
+  "/series": string;
+  "/team": string;
+  "/story": string;
+  "/table": string;
+  "/scores": string;
+  "/scoreboard": string;
+  "/standings": string;
+  "/cricketpicks": string;
 }
 
 export interface TentacledUrls {
@@ -3947,25 +3094,17 @@ export interface TentacledUrls {
 }
 
 export interface HilariousToEdition {
-  "/cricket/": Cricket;
-}
-
-export enum Cricket {
-  Empty = "/",
+  "/cricket/": string;
 }
 
 export interface UrlsToEnglish {
-  "/index": IndexEnum;
-}
-
-export enum IndexEnum {
-  CricketIndex = "/cricket/index",
+  "/index": string;
 }
 
 export interface EspncricinfoEnNzClass {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -4019,7 +3158,7 @@ export interface EspncricinfoEnNzClass {
 
 export interface EspncricinfoEnNzBetting {
   enabled: boolean;
-  provider: GameProvider;
+  provider: string;
   providerId: string;
   affiliateCode?: string;
   bet365blacklist: string[];
@@ -4034,7 +3173,7 @@ export interface FluffyAffiliateCodes {
 export interface EspncricinfoEnUs {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: ConfigDateTime;
   numberFormat: NumberFormat;
@@ -4090,7 +3229,7 @@ export interface EspncricinfoEnUs {
 export interface EspnfcEn {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: ConfigDateTime;
   numberFormat: NumberFormat;
@@ -4143,7 +3282,7 @@ export interface EspnfcEnFallback {
 }
 
 export interface EspnfcEnSiteLogo {
-  class: TwitterSite;
+  class: string;
 }
 
 export interface EspnfcEnTier2NavIDS {
@@ -4156,13 +3295,13 @@ export interface EspnfcEnTier3NavIDS {
 
 export interface EspnfcEnURIRewrites {
   urls: ParamKeys;
-  roots: StickyRoots;
+  roots: IndigoRoots;
   pathSegments: PathParams;
   paramKeys: PathParams;
   paramValues: PathParams;
 }
 
-export interface StickyRoots {
+export interface IndigoRoots {
   "/racing/nascar/": string;
   "/racing/": string;
   "/college-football/": string;
@@ -4178,16 +3317,25 @@ export interface StickyRoots {
   "/horse-racing/": string;
   "/sports/womenbb/": string;
   "/sports/horse/": string;
-  "/sports/endurance/": string;
-  "/losangeles/": string;
-  "/newyork/": string;
-  "/espn/onenacion/": string;
+  "/sports/endurance/"?: string;
+  "/losangeles/"?: string;
+  "/newyork/"?: string;
+  "/espn/onenacion/"?: string;
+  "/american-fb/"?: string;
+  "/football/club"?: string;
+  "/football/"?: string;
+  "/fixtures/"?: string;
+  "/olympics/summer/football"?: string;
+  "/nba-summer-league/"?: string;
+  "/espn/rss/football/"?: string;
+  "/nba-development/"?: string;
+  "/football/team"?: string;
 }
 
 export interface EspnfcEnAuClass {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -4252,37 +3400,16 @@ export interface EspnfcEnAuFallback {
 
 export interface EspnfcEnAuURIRewrites {
   urls: ParamKeys;
-  roots: IndigoRoots;
+  roots: TentacledRoots;
   pathSegments: PathParams;
   paramKeys: PathParams;
   paramValues: PathParams;
 }
 
-export interface IndigoRoots {
-  "/american-football/": string;
-  "/college-football/": string;
-  "/football/": string;
-  "/racing/nascar/": string;
-  "/racing/": string;
-  "/mens-college-basketball/": string;
-  "/womens-college-basketball/": string;
-  "/womens-basketball/": string;
-  "/olympics/": string;
-  "/cycling/": string;
-  "/fixtures/": string;
-  "/figure-skating/": string;
-  "/college-sports/": string;
-  "/gymnastics/": string;
-  "/skiing/": string;
-  "/horse-racing/": string;
-  "/sports/womenbb/": string;
-  "/sports/horse/": string;
-}
-
 export interface EspnfcEnNg {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -4353,7 +3480,7 @@ export interface EspnfcEnNgTier2NavIDS {
 export interface EspnfcEnUk {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -4407,20 +3534,20 @@ export interface EspnfcEnUkFallback {
 
 export interface EspnfcEnUkURIRewrites {
   urls: ParamKeys;
-  roots: ToEnglishClass;
+  roots: IndigoRoots;
   pathSegments: IndigoPathSegments;
   paramKeys: PathParams;
   paramValues: PathParams;
 }
 
 export interface IndigoPathSegments {
-  table: AuthorsEnum;
+  table: string;
 }
 
 export interface EspnidEn {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -4487,7 +3614,7 @@ export interface EspnidEnTier3NavIDS {
 
 export interface EspnidEnURIRewrites {
   urls: StickyUrls;
-  roots: IndecentRoots;
+  roots: FluffyRoots;
   pathSegments: IndecentPathSegments;
   paramKeys: PathParams;
   paramValues: PathParams;
@@ -4497,60 +3624,19 @@ export interface IndecentPathSegments {
   "soccer/table": string;
 }
 
-export interface IndecentRoots {
-  toEdition: IndigoToEdition;
-  toEnglish: TentacledToEnglish;
-}
-
-export interface TentacledToEnglish {
-  "/racing/nascar/": string;
-  "/racing/": string;
-  "/college-football/": string;
-  "/mens-college-basketball/": string;
-  "/womens-college-basketball/": string;
-  "/womens-basketball/": string;
-  "/olympics/": string;
-  "/cycling/": string;
-  "/figure-skating/": string;
-  "/college-sports/": string;
-  "/gymnastics/": string;
-  "/skiing/": string;
-  "/horse-racing/": string;
-  "/sports/womenbb/": string;
-  "/sports/horse/": string;
-  "/sports/endurance/"?: string;
-  "/losangeles/"?: string;
-  "/newyork/"?: string;
-  "/espn/onenacion/"?: string;
-  "/american-football/"?: string;
-  "/football/"?: string;
-  "/fixtures/"?: string;
-  "/oly/summer/gymnastics/"?: string;
-  "/oly/summer/cycling/"?: string;
-  "/nba-summer-league/"?: string;
-  "/espn/rss/football/"?: string;
-  "/nba-development/"?: string;
-  "/olympics/summer/football"?: string;
-  "/football/club"?: string;
-}
-
 export interface StickyUrls {
   toEdition: ToE;
   toEnglish: ToE;
 }
 
 export interface ToE {
-  "/series": ToEditionSeries;
-}
-
-export enum ToEditionSeries {
-  CricketSeries = "/cricket/series",
+  "/series": string;
 }
 
 export interface EspninEn {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -4606,22 +3692,27 @@ export interface EspninEn {
 }
 
 export interface EspninEnSportBranding {
-  sport: BolaDePrataEnum;
-  image: ImageEnum;
+  sport: string;
+  image: string;
 }
 
 export interface EspninEnURIRewrites {
   urls: StickyUrls;
-  roots: FluffyRoots;
+  roots: IndecentRoots;
   pathSegments: IndecentPathSegments;
   paramKeys: PathParams;
   paramValues: PathParams;
 }
 
+export interface IndecentRoots {
+  toEdition: IndigoToEdition;
+  toEnglish: IndigoRoots;
+}
+
 export interface EspnphEn {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -4702,7 +3793,7 @@ export interface EspnphEnTier3NavIDS {
 
 export interface EspnphEnURIRewrites {
   urls: IndigoUrls;
-  roots: HilariousRoots;
+  roots: FluffyRoots;
   pathSegments: HilariousPathSegments;
   paramKeys: PathParams;
   paramValues: PathParams;
@@ -4710,36 +3801,7 @@ export interface EspnphEnURIRewrites {
 
 export interface HilariousPathSegments {
   "soccer/table": string;
-  fixtures: Calendario;
-}
-
-export interface HilariousRoots {
-  toEdition: IndigoToEdition;
-  toEnglish: StickyToEnglish;
-}
-
-export interface StickyToEnglish {
-  "/olympics/summer/football": string;
-  "/college-football/": string;
-  "/football/club": string;
-  "/football/": string;
-  "/racing/nascar/": string;
-  "/racing/": string;
-  "/mens-college-basketball/": string;
-  "/womens-college-basketball/": string;
-  "/womens-basketball/": string;
-  "/olympics/": string;
-  "/cycling/": string;
-  "/figure-skating/": string;
-  "/college-sports/": string;
-  "/gymnastics/": string;
-  "/skiing/": string;
-  "/horse-racing/": string;
-  "/sports/womenbb/": string;
-  "/sports/horse/": string;
-  "/nba-summer-league/": string;
-  "/espn/rss/football/": string;
-  "/nba-development/": string;
+  fixtures: string;
 }
 
 export interface IndigoUrls {
@@ -4750,7 +3812,7 @@ export interface IndigoUrls {
 export interface EspnsgEn {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -4807,7 +3869,7 @@ export interface EspnsgEn {
 
 export interface EspnsgEnBetting {
   enabled: boolean;
-  provider: GameProvider;
+  provider: string;
   providerId: string;
   affiliateCodes: TentacledAffiliateCodes;
   game: Game;
@@ -4844,7 +3906,7 @@ export interface StickyClubhouse {
 
 export interface EspnsgEnURIRewrites {
   urls: ParamKeys;
-  roots: FluffyRoots;
+  roots: IndecentRoots;
   pathSegments: HilariousPathSegments;
   paramKeys: PathParams;
   paramValues: PathParams;
@@ -4853,7 +3915,7 @@ export interface EspnsgEnURIRewrites {
 export interface EspnukEn {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -4916,7 +3978,7 @@ export interface EspnukEnFeeds {
 export interface TentacledGooglenews {
   allowedContentTypes: string[];
   apiParamOverrides: APIParamOverrides;
-  excludedStoryTypes: SportElement[];
+  excludedStoryTypes: string[];
 }
 
 export interface APIParamOverrides {
@@ -4925,7 +3987,7 @@ export interface APIParamOverrides {
 
 export interface EspnukEnURIRewrites {
   urls: IndecentUrls;
-  roots: IndecentRoots;
+  roots: FluffyRoots;
   pathSegments: AmbitiousPathSegments;
   paramKeys: PathParams;
   paramValues: PathParams;
@@ -4934,7 +3996,7 @@ export interface EspnukEnURIRewrites {
 export interface AmbitiousPathSegments {
   "soccer/table": string;
   "football/table": string;
-  fixtures: Calendario;
+  fixtures: string;
 }
 
 export interface IndecentUrls {
@@ -4943,14 +4005,14 @@ export interface IndecentUrls {
 }
 
 export interface AmbitiousToEdition {
-  "/series": ToEditionSeries;
+  "/series": string;
   "/xfl/fixtures": string;
 }
 
 export interface EspnwwEn {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -5007,7 +4069,7 @@ export interface EspnwwEn {
 
 export interface EspnwwEnURIRewrites {
   urls: StickyUrls;
-  roots: FluffyRoots;
+  roots: IndecentRoots;
   pathSegments: HilariousPathSegments;
   paramKeys: PathParams;
   paramValues: PathParams;
@@ -5016,7 +4078,7 @@ export interface EspnwwEnURIRewrites {
 export interface EspnzaEn {
   editionSettings: ConfigEditionSettings;
   navId: string;
-  dictionarySection: TwitterSite;
+  dictionarySection: string;
   javaLocale: JavaLocale;
   dateTime: EspnauEnDateTime;
   numberFormat: NumberFormat;
@@ -5073,7 +4135,7 @@ export interface EspnzaEn {
 
 export interface EspnzaEnURIRewrites {
   urls: StickyUrls;
-  roots: HilariousRoots;
+  roots: FluffyRoots;
   pathSegments: HilariousPathSegments;
   paramKeys: PathParams;
   paramValues: PathParams;
@@ -5093,11 +4155,11 @@ export interface Entitlements {
 
 export interface Parameters {
   leagueItems: { [key: string]: LeagueItem[] };
-  sportRoot: LeagueElement;
+  sportRoot: string;
   xhr: string;
-  type: AuthorsEnum;
+  type: string;
   uri: string;
-  root: LeagueElement;
+  root: string;
 }
 
 export interface LeagueItem {
@@ -5108,11 +4170,11 @@ export interface LeagueItem {
 export interface LeagueItemLink {
   isExternal: boolean;
   shortText: string;
-  rel: Equipo[];
+  rel: string[];
   text: string;
   isPremium: boolean;
   href: string;
-  lang: Lang;
+  lang: string;
   attributes?: PurpleAttributes;
   logoUrl?: string;
 }
@@ -5141,7 +4203,7 @@ export interface FeatureGating {
   section: string;
   type: string;
   rootUrl: string;
-  site: TwitterAppNameGoogleplay;
+  site: string;
   customProperties: CustomProperties;
   premium: boolean;
   collections: PathParams;
@@ -5189,45 +4251,15 @@ export interface Entry {
 }
 
 export interface Stat {
-  shortDisplayName: Abbreviation;
+  shortDisplayName: string;
   displayValue: string;
-  displayName: DisplayName;
-  name: StatName;
-  description: Description;
-  type: Sort;
-  abbreviation: Abbreviation;
+  displayName: string;
+  name: string;
+  description: string;
+  type: string;
+  abbreviation: string;
   value: number | string;
-  display?: Display;
-}
-
-export enum DisplayName {
-  Conf = "CONF",
-  Div = "DIV",
-  Home = "Home",
-  Losses = "Losses",
-  PointDifferential = "Point Differential",
-  PointsAgainst = "Points Against",
-  PointsFor = "Points For",
-  Road = "Road",
-  Streak = "Streak",
-  Ties = "Ties",
-  WINS = "Wins",
-  WinPercentage = "Win Percentage",
-}
-
-export enum StatName {
-  Differential = "differential",
-  Home = "Home",
-  Losses = "losses",
-  PointsAgainst = "pointsAgainst",
-  PointsFor = "pointsFor",
-  Road = "Road",
-  Streak = "streak",
-  Ties = "ties",
-  VsConf = "vs. Conf.",
-  VsDiv = "vs. Div.",
-  WINS = "wins",
-  WinPercent = "winPercent",
+  display?: string;
 }
 
 export interface Team {
@@ -5255,22 +4287,22 @@ export interface Logo {
 export interface StandingsMeta {
   imageWidth: number;
   image: string;
-  twitter_card: Card;
+  twitter_card: string;
   og_site_name: string;
   twitter_app_id_iphone: string;
   description: string;
   og_type: string;
-  twitter_app_name_googleplay: TwitterAppNameGoogleplay;
+  twitter_app_name_googleplay: string;
   label: string;
   canonical: string;
-  type: AuthorsEnum;
+  type: string;
   title: string;
   imageHeight: number;
-  fb_app_id: FbAppID;
-  twitter_site: TwitterSite;
-  root: LeagueElement;
+  fb_app_id: string;
+  twitter_site: string;
+  root: string;
   twitter_app_id_googleplay: string;
-  twitter_app_name_iphone: TwitterAppNameGoogleplay;
+  twitter_app_name_iphone: string;
 }
 
 export interface Tier2Nav {
@@ -5295,7 +4327,7 @@ export interface Navigation {
 
 export interface NavigationAttributes {
   sport_id: string;
-  root: LeagueElement;
+  root: string;
   league: boolean;
 }
 
@@ -5306,10 +4338,10 @@ export interface NavigationItem {
   $ref: string;
   text?: string;
   items?: ItemItem[];
-  images?: ImageElement[];
+  images?: Image[];
 }
 
-export interface ImageElement {
+export interface Image {
   src: string;
 }
 
@@ -5328,8 +4360,8 @@ export interface PurpleLink {
   text: string;
   href: string;
   isPremium: boolean;
-  rel?: Equipo[];
-  lang?: Lang;
+  rel?: string[];
+  lang?: string;
   logoUrl?: string;
 }
 
@@ -5342,7 +4374,7 @@ export interface FluffyAttributes {
 export interface NavigationLink {
   isExternal: boolean;
   shortText: string;
-  rel: LeagueElement[];
+  rel: string[];
   attributes?: TentacledAttributes;
   text: string;
   href: string;
@@ -5353,7 +4385,7 @@ export interface TentacledAttributes {
   breakpoints?: string;
   route?: string;
   "match-url"?: string;
-  sportAbbrev?: LeagueElement;
+  sportAbbrev?: string;
   icon?: string;
   mobile?: string;
   placeholder?: string;

@@ -18,7 +18,7 @@ export interface Category {
 export interface Leader {
   displayValue: string;
   value: number;
-  rel: Rel[];
+  rel: string[];
   athlete: Athlete;
   statistics: Athlete;
   active: boolean;
@@ -26,8 +26,4 @@ export interface Leader {
 
 export interface Athlete {
   $ref: string;
-}
-
-export enum Rel {
-  Athlete = "athlete",
 }

@@ -29,7 +29,7 @@ export interface Athlete {
   id: string;
   uid: string;
   guid: string;
-  type: AthleteType;
+  type: string;
   alternateIds: AlternateIDS;
   firstName: string;
   lastName: string;
@@ -172,17 +172,13 @@ export enum TypeTypeEnum {
 }
 
 export interface AthleteLink {
-  language: Language;
+  language: string;
   rel: Rel[];
   href: string;
   text: Text;
   shortText: Text;
   isExternal: boolean;
   isPremium: boolean;
-}
-
-export enum Language {
-  EnUS = "en-US",
 }
 
 export enum Rel {
@@ -245,10 +241,6 @@ export interface Position {
   abbreviation: string;
   leaf: boolean;
   parent?: College;
-}
-
-export enum AthleteType {
-  Football = "football",
 }
 
 export interface Franchise {

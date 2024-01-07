@@ -28,14 +28,14 @@ export interface EventValue {
   awayTeamScore: string;
   gameResult: GameResult;
   opponent: Opponent;
-  leagueName: LeagueName;
-  leagueAbbreviation: League;
-  leagueShortName: League;
+  leagueName: string;
+  leagueAbbreviation: string;
+  leagueShortName: string;
   team: Opponent;
 }
 
 export enum AtVs {
-  Empty = "@",
+  At = "@",
   Vs = "vs",
 }
 
@@ -44,26 +44,14 @@ export enum GameResult {
   W = "W",
 }
 
-export enum League {
-  Nfl = "NFL",
-}
-
-export enum LeagueName {
-  NationalFootballLeague = "National Football League",
-}
-
 export interface Link {
-  language: Language;
+  language: string;
   rel: Type[];
   href: string;
   text: Text;
   shortText: Text;
   isExternal: boolean;
   isPremium: boolean;
-}
-
-export enum Language {
-  En = "en",
 }
 
 export enum Type {

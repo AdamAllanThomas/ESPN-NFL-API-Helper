@@ -24,45 +24,15 @@ export interface Competition {
 
 export interface Person {
   id: string;
-  firstName: FirstName;
-  lastName: LastName;
-  displayName: DisplayName;
+  firstName: string;
+  lastName: string;
+  displayName: string;
   headshot: Headshot;
-}
-
-export enum DisplayName {
-  DanGraziano = "Dan Graziano",
-  EricMoody = "Eric Moody",
-  JasonReid = "Jason Reid",
-  KimberleyMartin = "Kimberley Martin",
-  MikeClay = "Mike Clay",
-  SethWickersham = "Seth Wickersham",
-  StephaniaBell = "Stephania Bell",
-}
-
-export enum FirstName {
-  Dan = "Dan",
-  Eric = "Eric",
-  Jason = "Jason",
-  Kimberley = "Kimberley",
-  Mike = "Mike",
-  Seth = "Seth",
-  Stephania = "Stephania",
 }
 
 export interface Headshot {
   href: string;
-  alt: DisplayName;
-}
-
-export enum LastName {
-  Bell = "Bell",
-  Clay = "Clay",
-  Graziano = "Graziano",
-  Martin = "Martin",
-  Moody = "Moody",
-  Reid = "Reid",
-  Wickersham = "Wickersham",
+  alt: string;
 }
 
 export interface WeekRecord {

@@ -759,7 +759,7 @@ export interface Broadcast {
 
 export interface Competitor {
   uid: string;
-  homeAway: HomeAway;
+  homeAway: string;
   score: string;
   winner?: boolean;
   records: Record[];
@@ -770,14 +770,6 @@ export interface Competitor {
   order: number;
   statistics: any[];
   leaders?: CompetitorLeader[];
-}
-
-export enum HomeAway {
-  Away = "away",
-  Home = "home",
-  None = "none",
-  Over = "over",
-  Under = "under",
 }
 
 export interface CompetitorLeader {
@@ -933,12 +925,7 @@ export interface Media {
 
 export interface GeoBroadcastType {
   id: string;
-  shortName: ShortName;
-}
-
-export enum ShortName {
-  Tv = "TV",
-  Web = "Web",
+  shortName: string;
 }
 
 export interface Headline {
@@ -1112,7 +1099,7 @@ export interface Tags {
   league: string;
   sport: string;
   betType: string;
-  betSide: HomeAway;
+  betSide: string;
   betstrings?: string;
 }
 

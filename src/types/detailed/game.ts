@@ -30,7 +30,7 @@ export interface Package {
   isPPV: boolean;
   trialActive?: boolean;
   paywall: PackagePaywall;
-  countryCodes: CountryCode[];
+  countryCodes: string[];
   isIap: boolean;
   accountsHold?: AccountsHold[];
   name: string;
@@ -55,15 +55,6 @@ export interface AccountsHold {
   type: string;
   enabled: boolean;
   subHeader: string;
-}
-
-export enum CountryCode {
-  As = "AS",
-  Gu = "GU",
-  Mp = "MP",
-  PR = "PR",
-  Us = "US",
-  Vi = "VI",
 }
 
 export interface EmbeddedPaywall {
@@ -261,7 +252,7 @@ export interface Airing {
   appAiringLink: string;
   createdBy: string;
   program_originalAirDate: string;
-  program_shortTitle: ProgramShortTitle;
+  program_shortTitle: string;
   program_eventUrl: string;
   network_shortName: string;
   properties: AiringsAllProperties;
@@ -278,15 +269,10 @@ export interface Channel {
 
 export interface PeerElement {
   width: number;
-  name: ProgramShortTitle;
+  name: string;
   peers?: PeerElement[];
   url: string;
   height: number;
-}
-
-export enum ProgramShortTitle {
-  EnEspau00F1OlHoustonTexansVsIndianapolisColts = "En Espau00f1ol-Houston Texans vs. Indianapolis Colts",
-  HoustonTexansVsIndianapolisColts = "Houston Texans vs. Indianapolis Colts",
 }
 
 export interface AiringsAllPolicy {
@@ -300,58 +286,23 @@ export interface AiringsAllPolicy {
 
 export interface PurpleViewingPolicy {
   audience: PurpleAudience;
-  name: ViewingPolicyName;
-  externalId: ExternalID;
+  name: string;
+  externalId: string;
   id: string;
-  actions: Action[];
-}
-
-export enum Action {
-  AllowEntitlement = "allow_entitlement",
-  AllowStartover = "allow_startover",
-  RejectBlackout = "reject_blackout",
+  actions: string[];
 }
 
 export interface PurpleAudience {
-  name: AudienceName;
-  match: Match;
-  externalId: DtcPackage;
+  name: string;
+  match: string;
+  externalId: string;
   id: string;
   properties: PurpleProperties;
 }
 
-export enum DtcPackage {
-  AsGuMpPRUsVi = "AS_GU_MP_PR_US_VI",
-  EspnBase = "ESPN_BASE",
-  EspnPlus = "ESPN_PLUS",
-}
-
-export enum Match {
-  Any = "ANY",
-  None = "NONE",
-}
-
-export enum AudienceName {
-  AudienceForESPNBaseTier = "Audience for ESPN base tier",
-  AudienceForUSAndTerritoriesWhitelist = "Audience for US and territories whitelist",
-  ESPNPLUSEntitlementAudience = "ESPN_PLUS entitlement audience",
-}
-
 export interface PurpleProperties {
-  iso3166?: CountryCode[];
-  subscription?: DtcPackage[];
-}
-
-export enum ExternalID {
-  AllowStartover = "ALLOW_STARTOVER",
-  AsGuMpPRUsVi = "AS_GU_MP_PR_US_VI",
-  EspnPlus = "ESPN_PLUS",
-}
-
-export enum ViewingPolicyName {
-  ViewingPolicyForESPNPLUSEntitlement = "Viewing policy for ESPN_PLUS entitlement",
-  ViewingPolicyForUSAndTerritoriesAllowList = "Viewing policy for US and territories allow list",
-  ViewingPolicyToAllowStartover = "Viewing policy to allow startover",
+  iso3166?: string[];
+  subscription?: string[];
 }
 
 export interface ProductLinks {
@@ -362,92 +313,43 @@ export interface ProductLinks {
 export interface ProgramCategory {
   sportId: string;
   artworkUrl: string;
-  name: Label;
+  name: string;
   id: string;
-  type: ProgramCategoryType;
-}
-
-export enum Label {
-  Football = "Football",
-  Nfl = "NFL",
-}
-
-export enum ProgramCategoryType {
-  League = "league",
-  Sport = "sport",
+  type: string;
 }
 
 export interface AiringsAllProperties {
   hasEspnId3Heartbeats: string;
-  language: Language;
-  shortTitle: ShortTitle;
+  language: string;
+  shortTitle: string;
   trueOriginal: string;
-  title: ProgramShortTitle;
+  title: string;
   simulcastAiringId: string;
   contentCleared?: string;
   hasPassThroughAds: string;
-  dtcPackages?: DtcPackage[];
+  dtcPackages?: string[];
   airingConcurrency?: string;
   isLive: string;
   hasNielsenWatermarks: string;
   artworkLastModified: string;
   allowStartOver: string;
   trackingId: string;
-  commercialReplacement: Assetid;
-  allowedAccess: AllowedAccess;
+  commercialReplacement: string;
+  allowedAccess: string;
   reAir: string;
   sponsored: string;
-  liveReplay: LiveReplay;
+  liveReplay: string;
   broadcastStartOffset?: string;
-  feedType: FeedType;
-  ratingsId: RatingsID;
-  name: ProgramShortTitle;
-  shortName: ShortName;
+  feedType: string;
+  ratingsId: string;
+  name: string;
+  shortName: string;
   canIpAuthenticate: string;
   advertisingId?: string;
   killDateTimestamp?: Date;
   nbStartTimestamp?: Date;
   origination?: string;
 }
-
-export enum AllowedAccess {
-  Domestic = "domestic",
-}
-
-export enum Assetid {
-  AdServe = "AD SERVE",
-  NA = "N/A",
-  Tbd = "TBD",
-}
-
-export enum FeedType {
-  NationalFeed = "NATIONAL FEED",
-}
-
-export enum Language {
-  EnUS = "en-US",
-  EsMX = "es-MX",
-}
-
-export enum LiveReplay {
-  LiveOnly = "live_only",
-}
-
-export enum RatingsID {
-  Fbnl02598 = "FBNL02598",
-  Fbnl02941 = "FBNL02941",
-}
-
-export enum ShortName {
-  EnEspau00F1OlHoustonTexansVsIndianapolisColts = "En Espau00f1ol-Houston Texans vs. Indianapolis Colts",
-  NFLOnESPNDoubleheaderSaturday = "NFL on ESPN: Doubleheader Saturday",
-}
-
-export enum ShortTitle {
-  TexansVsColts = "Texans vs. Colts",
-  TexansVsColtsESP = "Texans vs. Colts (ESP)",
-}
-
 export interface EplusAiring {
   withinPlayWindow: boolean;
   program_eventId: string;
@@ -476,7 +378,7 @@ export interface EplusAiring {
   appAiringLink: string;
   createdBy: string;
   program_originalAirDate: string;
-  program_shortTitle: ProgramShortTitle;
+  program_shortTitle: string;
   program_eventUrl: string;
   network_shortName: string;
   properties: AiringsAllProperties;
@@ -513,7 +415,7 @@ export interface AiringsTVE {
   appAiringLink: string;
   createdBy: string;
   program_originalAirDate: string;
-  program_shortTitle: ProgramShortTitle;
+  program_shortTitle: string;
   program_eventUrl: string;
   network_shortName: string;
   properties: AiringsAllProperties;
@@ -531,22 +433,22 @@ export interface AiringsTVEPolicy {
 
 export interface FluffyViewingPolicy {
   audience: FluffyAudience;
-  name: ViewingPolicyName;
-  externalId: DtcPackage;
+  name: string;
+  externalId: string;
   id: string;
-  actions: Action[];
+  actions: string[];
 }
 
 export interface FluffyAudience {
-  name: AudienceName;
-  match: Match;
-  externalId: DtcPackage;
+  name: string;
+  match: string;
+  externalId: string;
   id: string;
   properties: FluffyProperties;
 }
 
 export interface FluffyProperties {
-  iso3166: CountryCode[];
+  iso3166: string[];
 }
 
 export interface NetworkHashDTC {
@@ -935,12 +837,12 @@ export interface Cricinfo {
 
 export interface General {
   ci: string;
-  assetid: Assetid;
-  segB: Assetid;
+  assetid: string;
+  segB: string;
   sfcode: string;
-  segA: Assetid;
-  section: Assetid;
-  segC: Assetid;
+  segA: string;
+  section: string;
+  segC: string;
   apn: string;
 }
 
@@ -1057,12 +959,8 @@ export interface GamepackageJSONBroadcast {
   station: string;
   media: PurpleMedia;
   type: PurpleType;
-  lang: Lang;
+  lang: string;
   region: string;
-}
-
-export enum Lang {
-  En = "en",
 }
 
 export interface Market {
@@ -1117,7 +1015,7 @@ export interface CompetitionBroadcast {
   market: Market;
   media: FluffyMedia;
   type: FluffyType;
-  lang: Lang;
+  lang: string;
   region: string;
 }
 
@@ -1151,7 +1049,7 @@ export interface HeaderLeague {
   name: string;
   links: TeamLink[];
   id: string;
-  abbreviation: Label;
+  abbreviation: string;
   slug: string;
   isTournament: boolean;
 }
@@ -1163,7 +1061,7 @@ export interface HeaderLink {
   href: string;
   text: string;
   isPremium: boolean;
-  language?: Language;
+  language?: string;
   attributes?: PurpleAttributes;
 }
 
@@ -1240,7 +1138,7 @@ export interface Mobile {
 }
 
 export interface CategoryLeague {
-  description: Label;
+  description: string;
   links: LeagueLinks;
   id: number;
 }
@@ -1389,7 +1287,7 @@ export interface Meta {
   description: string;
   og_type: string;
   twitter_app_name_googleplay: string;
-  label: Label;
+  label: string;
   canonical: string;
   type: string;
   title: string;
@@ -1415,7 +1313,7 @@ export interface Navigation {
   links: HeaderLink[];
   attributes: NavigationAttributes;
   id: number;
-  text: Label;
+  text: string;
   title: string;
   $ref: string;
   items: NavigationItem[];
@@ -1456,7 +1354,7 @@ export interface PurpleLink {
   href: string;
   isPremium: boolean;
   rel?: Rel[];
-  lang?: Lang;
+  lang?: string;
   logoUrl?: string;
 }
 

@@ -50,7 +50,7 @@ export interface TeamTeam {
 }
 
 export interface Link {
-  language: Language;
+  language: string;
   rel: LinkRel[];
   href: string;
   text: Text;
@@ -58,10 +58,6 @@ export interface Link {
   isExternal: boolean;
   isPremium: boolean;
   isHidden: boolean;
-}
-
-export enum Language {
-  EnUS = "en-US",
 }
 
 export enum LinkRel {

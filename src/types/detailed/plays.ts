@@ -697,12 +697,8 @@ export interface Broadcast {
   market: Market;
   media: Media;
   type: BroadcastType;
-  lang: Lang;
+  lang: string;
   region: string;
-}
-
-export enum Lang {
-  En = "en",
 }
 
 export interface Market {
@@ -1150,7 +1146,7 @@ export interface PurpleLink {
   href: string;
   isPremium: boolean;
   rel?: Rel[];
-  lang?: Lang;
+  lang?: string;
   logoUrl?: string;
 }
 

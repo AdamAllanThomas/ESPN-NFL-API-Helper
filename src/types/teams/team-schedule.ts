@@ -42,39 +42,22 @@ export interface Broadcast {
   type: BroadcastType;
   market: Market;
   media: Media;
-  lang: Lang;
-  region: Region;
-}
-
-export enum Lang {
-  En = "en",
+  lang: string;
+  region: string;
 }
 
 export interface Market {
   id: string;
-  type: MarketType;
-}
-
-export enum MarketType {
-  National = "National",
+  type: string;
 }
 
 export interface Media {
   shortName: string;
 }
 
-export enum Region {
-  Us = "us",
-}
-
 export interface BroadcastType {
   id: string;
-  shortName: ShortName;
-}
-
-export enum ShortName {
-  Tv = "TV",
-  Web = "Web",
+  shortName: string;
 }
 
 export interface Competitor {
@@ -155,16 +138,12 @@ export enum LeaderName {
 
 export interface Record {
   id: string;
-  abbreviation?: RecordAbbreviation;
+  abbreviation?: string;
   displayName: RecordDisplayName;
   shortDisplayName: ShortDisplayName;
   description: RecordDescription;
   type: RecordType;
   displayValue: string;
-}
-
-export enum RecordAbbreviation {
-  Game = "Game",
 }
 
 export enum RecordDescription {
@@ -273,21 +252,10 @@ export interface StatusType {
   name: TypeName;
   state: State;
   completed: boolean;
-  description: TypeDescription;
-  detail: Detail;
-  shortDetail: ShortDetail;
+  description: string;
+  detail: string;
+  shortDetail: string;
   altDetail?: string;
-}
-
-export enum TypeDescription {
-  Final = "Final",
-  Scheduled = "Scheduled",
-}
-
-export enum Detail {
-  Final = "Final",
-  FinalOT = "Final/OT",
-  SunJanuary7ThAt100PMEST = "Sun, January 7th at 1:00 PM EST",
 }
 
 export enum TypeName {
@@ -296,13 +264,8 @@ export enum TypeName {
   StatusScheduled = "STATUS_SCHEDULED",
 }
 
-export enum ShortDetail {
-  Final = "Final",
-  FinalOT = "Final/OT",
-  The17100PmEst = "1/7 - 1:00 PM EST",
-}
-
 export enum State {
+  In = "in",
   Post = "post",
   Pre = "pre",
 }
@@ -320,22 +283,10 @@ export interface Ticket {
 
 export interface CompetitionType {
   id: string;
-  text: TypeText;
-  abbreviation: TypeAbbreviation;
-  slug: Slug;
-  type: Slug;
-}
-
-export enum TypeAbbreviation {
-  Std = "STD",
-}
-
-export enum Slug {
-  Standard = "standard",
-}
-
-export enum TypeText {
-  Standard = "Standard",
+  text: string;
+  abbreviation: string;
+  slug: string;
+  type: string;
 }
 
 export interface Venue {
@@ -350,17 +301,13 @@ export interface Address {
 }
 
 export interface EventLink {
-  language: Language;
+  language: string;
   rel: FluffyRel[];
   href: string;
   text: ShortTextEnum;
   shortText: ShortTextEnum;
   isExternal: boolean;
   isPremium: boolean;
-}
-
-export enum Language {
-  EnUS = "en-US",
 }
 
 export enum FluffyRel {
@@ -402,16 +349,8 @@ export interface EventSeason {
 export interface SeasonType {
   id: string;
   type: number;
-  name: SeasonTypeName;
-  abbreviation: SeasonTypeAbbreviation;
-}
-
-export enum SeasonTypeAbbreviation {
-  Reg = "reg",
-}
-
-export enum SeasonTypeName {
-  RegularSeason = "Regular Season",
+  name: string;
+  abbreviation: string;
 }
 
 export interface Week {
@@ -422,7 +361,7 @@ export interface Week {
 export interface RequestedSeasonClass {
   year: number;
   type: number;
-  name: SeasonTypeName;
+  name: string;
   displayName: string;
   half?: number;
 }
