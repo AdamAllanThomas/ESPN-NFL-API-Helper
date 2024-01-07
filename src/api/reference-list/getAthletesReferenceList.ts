@@ -1,4 +1,4 @@
-import { Base as AthletesReferenceList } from "../../types/reference-list/base";
+import { AthletesReferenceList } from "../../generatedTypes/reference-list/AthletesReferenceList";
 import fetchData from "../fetchData";
 
 export async function getAthletesReferenceList(limit = 1000, active = true) {

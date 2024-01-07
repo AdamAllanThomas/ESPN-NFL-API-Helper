@@ -1,5 +1,5 @@
+import { Events } from "../../generatedTypes/reference-list/Events";
 import { SeasonType } from "../../types/api-enums";
-import { Events } from "../../types/reference-list/events";
 import fetchData from "../fetchData";
 
 export async function getEvents(
