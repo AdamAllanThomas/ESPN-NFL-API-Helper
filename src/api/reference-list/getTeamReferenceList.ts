@@ -1,4 +1,4 @@
-import { Base as TeamReferenceList } from "../../types/reference-list/base";
+import { ReferenceList as TeamReferenceList } from "../../types";
 import fetchData from "../fetchData";
 
 export async function getTeamReferenceList() {

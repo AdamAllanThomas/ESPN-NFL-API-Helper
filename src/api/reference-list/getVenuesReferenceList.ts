@@ -1,4 +1,4 @@
-import { Base as VenuesReferenceList } from "../../types/reference-list/base";
+import { ReferenceList as VenuesReferenceList } from "../../types";
 import fetchData from "../fetchData";
 
 export async function getVenuesReferenceList() {

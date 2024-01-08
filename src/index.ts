@@ -1,6 +1,5 @@
-import { getNews } from "./api/reference-list";
+import { createBarrels } from "./quicktype/createBarrels";
 import generateTypes from "./quicktype/generateTypes";
-import processEndpoint from "./quicktype/processEndpoint";
 
 export * from "./api/reference-list";
 

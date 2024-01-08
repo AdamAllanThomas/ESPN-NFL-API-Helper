@@ -1,4 +1,4 @@
-import { Leaders } from "../../types/reference-list/leaders";
+import { Leaders } from "../../types";
 import fetchData from "../fetchData";
 
 export async function getLeaders() {

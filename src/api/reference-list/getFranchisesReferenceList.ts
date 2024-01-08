@@ -1,4 +1,4 @@
-import { Base as FranchisesReferenceList } from "../../types/reference-list/base";
+import { ReferenceList as FranchisesReferenceList } from "../../types";
 import fetchData from "../fetchData";
 
 export async function getFranchisesReferenceList() {

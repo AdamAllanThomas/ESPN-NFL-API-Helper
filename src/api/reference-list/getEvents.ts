@@ -1,4 +1,4 @@
-import { Events } from "../../generatedTypes/reference-list/Events";
+import { Events } from "../../types";
 import { SeasonType } from "../../types/api-enums";
 import fetchData from "../fetchData";
 

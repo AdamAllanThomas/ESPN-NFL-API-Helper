@@ -1,4 +1,4 @@
-import { News } from "../../types/detailed/game-recap";
+import { News } from "../../types";
 import fetchData from "../fetchData";
 
 export async function getNews(limit = 50) {

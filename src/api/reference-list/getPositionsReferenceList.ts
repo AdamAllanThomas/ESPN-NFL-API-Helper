@@ -1,4 +1,4 @@
-import { Base as PositionsReferenceList } from "../../types/reference-list/base";
+import { ReferenceList as PositionsReferenceList } from "../../types";
 import fetchData from "../fetchData";
 
 export async function getPositionsReferenceList() {

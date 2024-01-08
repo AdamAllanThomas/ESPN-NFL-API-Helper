@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "start": "nodemon --ignore 'src/generatedTypes/*' --exec ts-node src/index.ts"
+    "start": "nodemon --ignore 'src/types.ts' --exec ts-node src/index.ts"
   },
   "author": "AdamAllanThomas",
   "license": "ISC",

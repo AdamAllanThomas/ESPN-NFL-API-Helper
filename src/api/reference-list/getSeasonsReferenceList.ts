@@ -1,4 +1,4 @@
-import { Base as SeasonsReferenceList } from "../../types/reference-list/base";
+import { ReferenceList as SeasonsReferenceList } from "../../types";
 import fetchData from "../fetchData";
 
 export async function getSeasonsReferenceList() {
