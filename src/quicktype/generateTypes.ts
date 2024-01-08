@@ -12,10 +12,6 @@ export default async function generateTypes() {
   const inputData = new InputData();
   const groupInputData = jsonInputForTargetLanguage(targetLanguage);
   for (const fnConfig of functions) {
-    // if the type isnt ScoreboardCDN, skip it
-    if (fnConfig.typeName !== "ScoreboardCDN") {
-      continue;
-    }
     const params = Array.isArray(fnConfig.params) ? fnConfig.params : [];
     const jsonSample = JSON.stringify(await fnConfig.fn(...params))
       .replace(/\\"/g, "")
